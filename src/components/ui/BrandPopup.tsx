@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Sparkles, ArrowRight } from "lucide-react";
 import Image from "next/image";
-import BannerImage from "@/assests/SL-DevSolutions Banner.png";
+import BannerImage from "@/assests/SL-DevSolutions Banner.jpg";
 import LogoImage from "@/assests/SL-DevSolutions Logo.png";
 
 export function BrandPopup() {
@@ -57,11 +57,11 @@ export function BrandPopup() {
             </button>
 
             {/* Banner Section */}
-            <div className="relative w-full aspect-[2/1] overflow-hidden border-b border-white/5 bg-slate-950">
+            <div className="relative w-full aspect-[2/1] overflow-hidden border-b border-white/5 bg-slate-950 flex items-center justify-center">
               <Image
                 src={BannerImage}
                 alt="SL-DevSolutions Banner"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-contain"
                 priority
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-80" />
@@ -89,8 +89,8 @@ export function BrandPopup() {
               <h3 className="text-xl font-extrabold text-white mb-2">
                 We are <span className="gradient-text-accent">SL-DevSolutions</span>
               </h3>
-              <p className="text-xs text-slate-400 leading-relaxed mb-6">
-                DevLanka has officially evolved into SL-DevSolutions. We've updated our visual brand identity and engineering abstractions to deliver even higher quality full-stack web architectures for our partners.
+              <p className="text-sm text-slate-300 leading-relaxed mb-6">
+                Welcome to the SL-DevSolutions
               </p>
 
               {/* Action Button */}
