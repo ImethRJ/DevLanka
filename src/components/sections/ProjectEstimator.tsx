@@ -84,7 +84,7 @@ export function ProjectEstimator() {
   };
 
   const copyEmail = () => {
-    navigator.clipboard.writeText("hello@devlanka.com");
+    navigator.clipboard.writeText("hello@sl-devsolutions.com");
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -352,7 +352,7 @@ export function ProjectEstimator() {
                 </div>
                 <div>
                   <span className="text-[10px] uppercase font-mono text-slate-400 block font-bold">Direct Email</span>
-                  <span className="text-xs font-bold text-white">hello@devlanka.com</span>
+                  <span className="text-xs font-bold text-white">hello@sl-devsolutions.com</span>
                 </div>
               </div>
 

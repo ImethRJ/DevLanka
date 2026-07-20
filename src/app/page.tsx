@@ -6,10 +6,12 @@ import { ProcessTimeline } from "@/components/sections/ProcessTimeline";
 import { MetricsAndTestimonials } from "@/components/sections/MetricsAndTestimonials";
 import { ProjectEstimator } from "@/components/sections/ProjectEstimator";
 import { Footer } from "@/components/layout/Footer";
+import { BrandPopup } from "@/components/ui/BrandPopup";
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-slate-950 text-white selection:bg-sky-500 selection:text-white relative overflow-hidden">
+      <BrandPopup />
       <Header />
       <Hero />
       <PortfolioShowcase />

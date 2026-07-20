@@ -1,7 +1,9 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Code2, Heart, ArrowUp, Globe, Share2, MessageSquare, Terminal } from "lucide-react";
+import { Heart, ArrowUp, Globe, Share2, MessageSquare, Terminal } from "lucide-react";
+import Image from "next/image";
+import LogoImage from "@/assests/SL-DevSolutions Logo.png";
 
 export function Footer() {
   const [time, setTime] = useState<string>("");
@@ -36,12 +38,16 @@ export function Footer() {
           {/* Brand Col */}
           <div className="md:col-span-5 space-y-4">
             <a href="#" className="flex items-center gap-2.5 text-xl font-extrabold text-white">
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-sky-400 to-indigo-600 p-[1px] shadow-lg shadow-sky-500/20">
-                <div className="w-full h-full bg-slate-950 rounded-[11px] flex items-center justify-center">
-                  <Code2 className="w-4 h-4 text-sky-400" />
+              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-sky-400 to-indigo-600 p-[1px] shadow-lg shadow-sky-500/20 flex items-center justify-center overflow-hidden">
+                <div className="w-full h-full bg-slate-950 rounded-[11px] flex items-center justify-center p-1.5">
+                  <Image
+                    src={LogoImage}
+                    alt="SL-DevSolutions Logo"
+                    className="w-full h-full object-contain"
+                  />
                 </div>
               </div>
-              <span className="tracking-tight">DEVLANKA</span>
+              <span className="tracking-tight">SL-DevSolutions</span>
             </a>
             <p className="text-slate-400 leading-relaxed max-w-sm">
               Full-Stack Web Engineering & UI/UX Architecture Studio. Crafting ultra-fluid, high-converting digital products for ambitious global brands.
@@ -102,10 +108,10 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-slate-500">
           <div>
-            &copy; {new Date().getFullYear()} DevLanka Digital Studio. All rights reserved.
+            &copy; {new Date().getFullYear()} SL-DevSolutions Digital Studio. All rights reserved.
           </div>
           <div className="flex items-center gap-1">
-            Designed & Engineered with <Heart className="w-3 h-3 text-red-500 fill-red-500 mx-0.5" /> by DevLanka Architect Team
+            Designed & Engineered with <Heart className="w-3 h-3 text-red-500 fill-red-500 mx-0.5" /> by SL-DevSolutions Architect Team
           </div>
         </div>
 

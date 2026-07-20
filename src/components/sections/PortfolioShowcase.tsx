@@ -15,11 +15,13 @@ import {
   Code,
   Layers,
 } from "lucide-react";
+import burgerDesktop from "@/assests/Burger-Desktop Preview.jpeg";
+import burgerMobile from "@/assests/Burger-Mobile Preview.png";
 
 export interface Project {
   id: string;
   title: string;
-  category: "SaaS" | "E-Commerce" | "Fintech" | "Landing";
+  category: "SaaS" | "E-Commerce" | "Fintech" | "Landing" | "Food Tech";
   subtitle: string;
   description: string;
   liveUrl: string;
@@ -27,6 +29,8 @@ export interface Project {
   tags: string[];
   desktopPreview: string;
   mobilePreview: string;
+  overlaySubtitle?: string;
+  browserUrl?: string;
   caseStudy: {
     challenge: string;
     solution: string;
@@ -35,6 +39,29 @@ export interface Project {
 }
 
 const PROJECTS: Project[] = [
+  {
+    id: "sector-burger",
+    title: "Sector Burger",
+    category: "Food Tech",
+    subtitle: "Artisanal Sri Lankan Fusion Smash Burger Platform with Local Spice Metrics & Real-time Cart Drawer",
+    overlaySubtitle: "Sri Lankan Fusion Smash Burgers",
+    description: "Artisanal Sri Lankan Fusion Smash Burger Platform with Local Spice Metrics & Real-time Cart Drawer",
+    liveUrl: "https://sector-burger.vercel.app/",
+    browserUrl: "https://sector-burger.vercel.app/",
+    metrics: "+142% Order Checkout Conversion",
+    tags: ["Next.js 15", "React 19", "Tailwind v4", "TypeScript"],
+    desktopPreview: burgerDesktop.src,
+    mobilePreview: burgerMobile.src,
+    caseStudy: {
+      challenge: "Create a highly responsive, visually rich ordering platform that handles localized spice level preferences and dynamic cart states without page reloads.",
+      solution: "Leveraged Next.js 15 App Router and React 19 Server Components for high-performance content delivery, alongside Tailwind v4 for modern fluid styling and a state-managed Cart Drawer.",
+      results: [
+        "+142% increase in checkout conversions through the interactive Cart Drawer",
+        "99.8% perfect Lighthouse performance and accessibility scores",
+        "Seamless local spice-metric customizer interaction in sub-50ms",
+      ],
+    },
+  },
   {
     id: "aetheria-ai",
     title: "Aetheria AI Platform",
@@ -107,7 +134,7 @@ export function PortfolioShowcase() {
   const [activeCaseStudy, setActiveCaseStudy] = useState<Project | null>(null);
   const [iframeLoaded, setIframeLoaded] = useState(false);
 
-  const categories = ["All", "SaaS", "E-Commerce", "Fintech"];
+  const categories = ["All", "SaaS", "E-Commerce", "Fintech", "Food Tech"];
 
   const filteredProjects = selectedCategory === "All"
     ? PROJECTS
@@ -225,7 +252,7 @@ export function PortfolioShowcase() {
                     <span className="w-3 h-3 rounded-full bg-green-500/80" />
                   </div>
                   <span className="text-xs font-mono text-slate-400 ml-2 truncate max-w-[200px]">
-                    https://demo.{activeProject.id}.devlanka.com
+                    {activeProject.browserUrl || `https://demo.${activeProject.id}.sl-devsolutions.com`}
                   </span>
                 </div>
 
@@ -263,51 +290,62 @@ export function PortfolioShowcase() {
               </div>
 
               {/* Viewport Screen Content */}
-              <div className="relative overflow-hidden rounded-2xl bg-slate-950 flex items-center justify-center min-h-[380px] sm:min-h-[460px] border border-white/5">
-                
-                {/* Desktop Viewport Mode */}
-                {deviceMode === "desktop" && (
-                  <div className="w-full h-full relative group">
-                    <img
-                      src={activeProject.desktopPreview}
-                      alt={activeProject.title}
-                      className="w-full h-[460px] object-cover object-top transition-all duration-700 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity" />
-                    
-                    <div className="absolute bottom-6 left-6 right-6 p-4 rounded-xl glass-panel border border-white/10 flex items-center justify-between">
-                      <div>
-                        <h4 className="text-base font-bold text-white">{activeProject.title}</h4>
-                        <p className="text-xs text-slate-300">{activeProject.subtitle}</p>
+              <div className="relative overflow-hidden rounded-2xl bg-slate-950 flex items-center justify-center min-h-[380px] sm:min-h-[460px] border border-white/5 w-full">
+                <AnimatePresence mode="wait">
+                  {deviceMode === "desktop" ? (
+                    <motion.div
+                      key={`${activeProject.id}-desktop`}
+                      initial={{ opacity: 0, x: 10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: -10 }}
+                      transition={{ duration: 0.3 }}
+                      className="w-full h-full relative group"
+                    >
+                      <img
+                        src={activeProject.desktopPreview}
+                        alt={activeProject.title}
+                        className="w-full h-[460px] object-cover object-top transition-all duration-700 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity" />
+                      
+                      <div className="absolute bottom-6 left-6 right-6 p-4 rounded-xl glass-panel border border-white/10 flex items-center justify-between">
+                        <div>
+                          <h4 className="text-base font-bold text-white">{activeProject.title}</h4>
+                          <p className="text-xs text-slate-300">{activeProject.overlaySubtitle || activeProject.subtitle}</p>
+                        </div>
+                        <a
+                          href={activeProject.liveUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="px-4 py-2 rounded-xl bg-sky-500 hover:bg-sky-400 text-white text-xs font-bold flex items-center gap-1.5 transition-colors shadow-lg shadow-sky-500/25"
+                        >
+                          <span>Visit Live Site</span>
+                          <ExternalLink className="w-3.5 h-3.5" />
+                        </a>
                       </div>
-                      <a
-                        href={activeProject.liveUrl}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="px-4 py-2 rounded-xl bg-sky-500 hover:bg-sky-400 text-white text-xs font-bold flex items-center gap-1.5 transition-colors shadow-lg shadow-sky-500/25"
-                      >
-                        <span>Visit Live Site</span>
-                        <ExternalLink className="w-3.5 h-3.5" />
-                      </a>
-                    </div>
-                  </div>
-                )}
-
-                {/* Mobile Viewport Mode */}
-                {deviceMode === "mobile" && (
-                  <div className="py-6 flex justify-center w-full bg-slate-900/50">
-                    <div className="w-[260px] h-[440px] rounded-[36px] p-3 bg-slate-900 border-4 border-slate-700 shadow-2xl relative overflow-hidden">
-                      <div className="w-24 h-4 bg-slate-800 rounded-full mx-auto mb-2" />
-                      <div className="w-full h-[390px] rounded-[24px] overflow-hidden relative">
-                        <img
-                          src={activeProject.mobilePreview}
-                          alt={activeProject.title}
-                          className="w-full h-full object-cover object-top"
-                        />
+                    </motion.div>
+                  ) : deviceMode === "mobile" ? (
+                    <motion.div
+                      key={`${activeProject.id}-mobile`}
+                      initial={{ opacity: 0, x: 10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: -10 }}
+                      transition={{ duration: 0.3 }}
+                      className="py-6 flex justify-center w-full bg-slate-900/50"
+                    >
+                      <div className="w-[260px] h-[440px] rounded-[36px] p-3 bg-slate-900 border-4 border-slate-700 shadow-2xl relative overflow-hidden">
+                        <div className="w-24 h-4 bg-slate-800 rounded-full mx-auto mb-2" />
+                        <div className="w-full h-[390px] rounded-[24px] overflow-hidden relative">
+                          <img
+                            src={activeProject.mobilePreview}
+                            alt={activeProject.title}
+                            className="w-full h-full object-cover object-top"
+                          />
+                        </div>
                       </div>
-                    </div>
-                  </div>
-                )}
+                    </motion.div>
+                  ) : null}
+                </AnimatePresence>
               </div>
             </div>
           </div>

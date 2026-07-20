@@ -2,7 +2,9 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Sparkles, Menu, X, ArrowUpRight, Code2 } from "lucide-react";
+import { Sparkles, Menu, X, ArrowUpRight } from "lucide-react";
+import Image from "next/image";
+import LogoImage from "@/assests/SL-DevSolutions Logo.png";
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -70,16 +72,20 @@ export function Header() {
           href="#"
           onClick={(e) => handleNavClick(e, "#")}
           className="group flex items-center gap-2.5 text-xl font-extrabold tracking-tight"
-          data-cursor="DEVLANKA"
+          data-cursor="SL-DEVSOLUTIONS"
         >
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-sky-400 via-indigo-500 to-purple-600 p-[1.5px] shadow-lg shadow-sky-500/20 group-hover:shadow-sky-500/40 transition-all duration-300">
-            <div className="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center">
-              <Code2 className="w-5 h-5 text-sky-400 group-hover:scale-110 transition-transform duration-300" />
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-sky-400 via-indigo-500 to-purple-600 p-[1.5px] shadow-lg shadow-sky-500/20 group-hover:shadow-sky-500/40 transition-all duration-300 flex items-center justify-center overflow-hidden">
+            <div className="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center p-1.5">
+              <Image
+                src={LogoImage}
+                alt="SL-DevSolutions Logo"
+                className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300"
+              />
             </div>
           </div>
           <div className="flex flex-col">
             <span className="text-white font-bold text-lg leading-tight flex items-center gap-1.5">
-              DEVLANKA <span className="w-1.5 h-1.5 rounded-full bg-sky-400 animate-pulse" />
+              SL-DevSolutions <span className="w-1.5 h-1.5 rounded-full bg-sky-400 animate-pulse" />
             </span>
             <span className="text-[10px] tracking-widest uppercase font-semibold text-slate-400 group-hover:text-sky-400 transition-colors">
               Digital Studio

@@ -15,10 +15,11 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "DevLanka — Senior Full-Stack Engineering & UI/UX Architecture Studio",
+  title: "SL-DevSolutions — Senior Full-Stack Engineering & UI/UX Architecture Studio",
   description:
-    "DevLanka crafts ultra-fluid, high-converting bespoke websites and full-stack web applications for ambitious brands worldwide.",
+    "SL-DevSolutions crafts ultra-fluid, high-converting bespoke websites and full-stack web applications for ambitious brands worldwide.",
   keywords: [
+    "SL-DevSolutions",
     "Full-Stack Web Development",
     "UI/UX Agency",
     "Next.js 15 Developer",
