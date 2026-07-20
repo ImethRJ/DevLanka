@@ -23,7 +23,7 @@ import sectorMobile from "@/assests/Sector-Mobile Preview.png";
 export interface Project {
   id: string;
   title: string;
-  category: "SaaS" | "E-Commerce" | "Fintech" | "Landing" | "Food Tech" | "EdTech";
+  category: "SaaS" | "E-Commerce" | "Fintech" | "Landing" | "Food Tech" | "Education";
   subtitle: string;
   description: string;
   liveUrl: string;
@@ -67,7 +67,7 @@ const PROJECTS: Project[] = [
   {
     id: "sector-institute",
     title: "Sector Education Institute",
-    category: "EdTech",
+    category: "Education",
     subtitle: "Modern high-performance digital hub for class timetables, tutor directory, and real-time academic notices.",
     overlaySubtitle: "Sector Education Institute Website",
     description: "Modern high-performance digital hub for class timetables, tutor directory, and real-time academic notices.",
@@ -129,27 +129,6 @@ const PROJECTS: Project[] = [
       ],
     },
   },
-  {
-    id: "novapay",
-    title: "NovaPay Exchange",
-    category: "Fintech",
-    subtitle: "Ultra-Fast Multi-Currency Crypto & Asset Trading Hub",
-    description: "High-security financial trading platform with instant swap calculations, interactive market depth graphs, and biometrics auth.",
-    liveUrl: "https://wikipedia.org",
-    metrics: "99.99% Uptime & 0.4s FCP",
-    tags: ["React 19", "TypeScript", "Tailwind v4", "WebSockets", "Node.js"],
-    desktopPreview: "https://images.unsplash.com/photo-1642543492481-44e81e3914a7?auto=format&fit=crop&w=1200&q=80",
-    mobilePreview: "https://images.unsplash.com/photo-1621416894569-0f39ed31d247?auto=format&fit=crop&w=600&q=80",
-    caseStudy: {
-      challenge: "Deliver sub-second transaction feedback and real-time ledger updates across global edge servers.",
-      solution: "Implemented Cloudflare Workers edge computing paired with zero-latency client state synchronization.",
-      results: [
-        "Processed over 500,000 live test transactions seamlessly",
-        "99.99% infrastructure availability during peak volatility",
-        "Strict OWASP security compliance certification",
-      ],
-    },
-  },
 ];
 
 export function PortfolioShowcase() {
@@ -159,7 +138,7 @@ export function PortfolioShowcase() {
   const [activeCaseStudy, setActiveCaseStudy] = useState<Project | null>(null);
   const [iframeLoaded, setIframeLoaded] = useState(false);
 
-  const categories = ["All", "SaaS", "E-Commerce", "Fintech", "Food Tech", "EdTech"];
+  const categories = ["All", "SaaS", "E-Commerce", "Food Tech", "Education"];
 
   const filteredProjects = selectedCategory === "All"
     ? PROJECTS
@@ -168,7 +147,7 @@ export function PortfolioShowcase() {
   return (
     <section id="portfolio" className="py-28 relative z-10 bg-slate-950/80 border-t border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
           <div>
@@ -188,11 +167,10 @@ export function PortfolioShowcase() {
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
-                className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all duration-200 ${
-                  selectedCategory === cat
-                    ? "bg-sky-500 text-white shadow-lg shadow-sky-500/30"
-                    : "text-slate-400 hover:text-white hover:bg-white/5"
-                }`}
+                className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all duration-200 ${selectedCategory === cat
+                  ? "bg-sky-500 text-white shadow-lg shadow-sky-500/30"
+                  : "text-slate-400 hover:text-white hover:bg-white/5"
+                  }`}
                 data-cursor="FILTER"
               >
                 {cat}
@@ -203,7 +181,7 @@ export function PortfolioShowcase() {
 
         {/* Main Interactive Stage: Left Thumbnails, Right Dynamic Frame */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          
+
           {/* Left Side: Project Cards List */}
           <div className="lg:col-span-5 space-y-4">
             {filteredProjects.map((project) => {
@@ -219,11 +197,10 @@ export function PortfolioShowcase() {
                       setIframeLoaded(false);
                     }
                   }}
-                  className={`p-6 rounded-2xl cursor-pointer transition-all duration-300 border ${
-                    isSelected
-                      ? "glass-panel border-sky-400/50 shadow-xl shadow-sky-500/10 scale-[1.01]"
-                      : "glass-card hover:border-white/20"
-                  }`}
+                  className={`p-6 rounded-2xl cursor-pointer transition-all duration-300 border ${isSelected
+                    ? "glass-panel border-sky-400/50 shadow-xl shadow-sky-500/10 scale-[1.01]"
+                    : "glass-card hover:border-white/20"
+                    }`}
                   data-cursor="SELECT"
                 >
                   <div className="flex items-center justify-between mb-2">
@@ -293,18 +270,16 @@ export function PortfolioShowcase() {
                             <div className="flex items-center gap-0.5 bg-slate-900/90 p-0.5 rounded-lg border border-white/5">
                               <button
                                 onClick={() => setDeviceMode("desktop")}
-                                className={`flex items-center gap-1 px-2 py-1 rounded-md text-[10px] font-semibold transition-colors ${
-                                  deviceMode === "desktop" ? "bg-sky-500 text-white" : "text-slate-400 hover:text-white"
-                                }`}
+                                className={`flex items-center gap-1 px-2 py-1 rounded-md text-[10px] font-semibold transition-colors ${deviceMode === "desktop" ? "bg-sky-500 text-white" : "text-slate-400 hover:text-white"
+                                  }`}
                               >
                                 <Laptop className="w-3 h-3" />
                                 <span>Desktop</span>
                               </button>
                               <button
                                 onClick={() => setDeviceMode("mobile")}
-                                className={`flex items-center gap-1 px-2 py-1 rounded-md text-[10px] font-semibold transition-colors ${
-                                  deviceMode === "mobile" ? "bg-sky-500 text-white" : "text-slate-400 hover:text-white"
-                                }`}
+                                className={`flex items-center gap-1 px-2 py-1 rounded-md text-[10px] font-semibold transition-colors ${deviceMode === "mobile" ? "bg-sky-500 text-white" : "text-slate-400 hover:text-white"
+                                  }`}
                               >
                                 <Smartphone className="w-3 h-3" />
                                 <span>Mobile</span>
@@ -337,7 +312,7 @@ export function PortfolioShowcase() {
                                     className="w-full h-[340px] object-cover object-top"
                                   />
                                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent opacity-80" />
-                                  
+
                                   <div className="absolute bottom-3 left-3 right-3 p-2.5 rounded-lg glass-panel border border-white/10 flex items-center justify-between gap-2">
                                     <div className="min-w-0">
                                       <h4 className="text-xs font-bold text-white truncate">{activeProject.title}</h4>
@@ -408,9 +383,8 @@ export function PortfolioShowcase() {
                     <div className="flex items-center gap-1 bg-slate-900/90 p-1 rounded-xl border border-white/10">
                       <button
                         onClick={() => setDeviceMode("desktop")}
-                        className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors ${
-                          deviceMode === "desktop" ? "bg-sky-500 text-white" : "text-slate-400 hover:text-white"
-                        }`}
+                        className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors ${deviceMode === "desktop" ? "bg-sky-500 text-white" : "text-slate-400 hover:text-white"
+                          }`}
                         data-cursor="DESKTOP"
                       >
                         <Laptop className="w-3.5 h-3.5" />
@@ -418,9 +392,8 @@ export function PortfolioShowcase() {
                       </button>
                       <button
                         onClick={() => setDeviceMode("mobile")}
-                        className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors ${
-                          deviceMode === "mobile" ? "bg-sky-500 text-white" : "text-slate-400 hover:text-white"
-                        }`}
+                        className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors ${deviceMode === "mobile" ? "bg-sky-500 text-white" : "text-slate-400 hover:text-white"
+                          }`}
                         data-cursor="MOBILE"
                       >
                         <Smartphone className="w-3.5 h-3.5" />
@@ -455,7 +428,7 @@ export function PortfolioShowcase() {
                             className="w-full h-[460px] object-cover object-top transition-all duration-700 group-hover:scale-105"
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity" />
-                          
+
                           <div className="absolute bottom-6 left-6 right-6 p-4 rounded-xl glass-panel border border-white/10 flex items-center justify-between">
                             <div>
                               <h4 className="text-base font-bold text-white">{activeProject.title}</h4>
