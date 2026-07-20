@@ -154,7 +154,7 @@ const PROJECTS: Project[] = [
 
 export function PortfolioShowcase() {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
-  const [activeProject, setActiveProject] = useState<Project>(PROJECTS[0]);
+  const [activeProject, setActiveProject] = useState<Project | null>(PROJECTS[0]);
   const [deviceMode, setDeviceMode] = useState<"desktop" | "mobile" | "caseStudy">("desktop");
   const [activeCaseStudy, setActiveCaseStudy] = useState<Project | null>(null);
   const [iframeLoaded, setIframeLoaded] = useState(false);
@@ -207,13 +207,17 @@ export function PortfolioShowcase() {
           {/* Left Side: Project Cards List */}
           <div className="lg:col-span-5 space-y-4">
             {filteredProjects.map((project) => {
-              const isSelected = activeProject.id === project.id;
+              const isSelected = activeProject?.id === project.id;
               return (
                 <motion.div
                   key={project.id}
                   onClick={() => {
-                    setActiveProject(project);
-                    setIframeLoaded(false);
+                    if (isSelected) {
+                      setActiveProject(null);
+                    } else {
+                      setActiveProject(project);
+                      setIframeLoaded(false);
+                    }
                   }}
                   className={`p-6 rounded-2xl cursor-pointer transition-all duration-300 border ${
                     isSelected
@@ -259,119 +263,248 @@ export function PortfolioShowcase() {
                       View Case Study
                     </button>
                   </div>
+
+                  {/* Inline Preview (Mobile/Tablet Only) */}
+                  <AnimatePresence initial={false}>
+                    {isSelected && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="overflow-hidden lg:hidden mt-4 border-t border-white/10 pt-4 cursor-default"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <div className="glass-panel p-3 sm:p-4 rounded-2xl border border-white/10 shadow-2xl relative bg-slate-950/40">
+                          {/* Frame Controls Header */}
+                          <div className="flex items-center justify-between pb-3 mb-3 border-b border-white/10 flex-wrap gap-2">
+                            <div className="flex items-center gap-1.5">
+                              <div className="flex gap-1">
+                                <span className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
+                                <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/80" />
+                                <span className="w-2.5 h-2.5 rounded-full bg-green-500/80" />
+                              </div>
+                              <span className="text-[10px] font-mono text-slate-400 ml-1.5 truncate max-w-[140px]">
+                                {activeProject?.browserUrl || `https://demo.${activeProject?.id}.sl-devsolutions.com`}
+                              </span>
+                            </div>
+
+                            {/* View Mode Switcher */}
+                            <div className="flex items-center gap-0.5 bg-slate-900/90 p-0.5 rounded-lg border border-white/5">
+                              <button
+                                onClick={() => setDeviceMode("desktop")}
+                                className={`flex items-center gap-1 px-2 py-1 rounded-md text-[10px] font-semibold transition-colors ${
+                                  deviceMode === "desktop" ? "bg-sky-500 text-white" : "text-slate-400 hover:text-white"
+                                }`}
+                              >
+                                <Laptop className="w-3 h-3" />
+                                <span>Desktop</span>
+                              </button>
+                              <button
+                                onClick={() => setDeviceMode("mobile")}
+                                className={`flex items-center gap-1 px-2 py-1 rounded-md text-[10px] font-semibold transition-colors ${
+                                  deviceMode === "mobile" ? "bg-sky-500 text-white" : "text-slate-400 hover:text-white"
+                                }`}
+                              >
+                                <Smartphone className="w-3 h-3" />
+                                <span>Mobile</span>
+                              </button>
+                              <button
+                                onClick={() => activeProject && setActiveCaseStudy(activeProject)}
+                                className="flex items-center gap-1 px-2 py-1 rounded-md text-[10px] font-semibold text-slate-300 hover:text-white hover:bg-white/5"
+                              >
+                                <Layers className="w-3 h-3" />
+                                <span>Specs</span>
+                              </button>
+                            </div>
+                          </div>
+
+                          {/* Viewport Screen Content */}
+                          <div className="relative overflow-hidden rounded-xl bg-slate-950 flex items-center justify-center min-h-[260px] sm:min-h-[340px] border border-white/5 w-full">
+                            <AnimatePresence mode="wait">
+                              {deviceMode === "desktop" ? (
+                                <motion.div
+                                  key={`${activeProject.id}-inline-desktop`}
+                                  initial={{ opacity: 0 }}
+                                  animate={{ opacity: 1 }}
+                                  exit={{ opacity: 0 }}
+                                  transition={{ duration: 0.2 }}
+                                  className="w-full h-full relative group"
+                                >
+                                  <img
+                                    src={activeProject.desktopPreview}
+                                    alt={activeProject.title}
+                                    className="w-full h-[340px] object-cover object-top"
+                                  />
+                                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent opacity-80" />
+                                  
+                                  <div className="absolute bottom-3 left-3 right-3 p-2.5 rounded-lg glass-panel border border-white/10 flex items-center justify-between gap-2">
+                                    <div className="min-w-0">
+                                      <h4 className="text-xs font-bold text-white truncate">{activeProject.title}</h4>
+                                      <p className="text-[10px] text-slate-300 truncate">{activeProject.overlaySubtitle || activeProject.subtitle}</p>
+                                    </div>
+                                    <a
+                                      href={activeProject.liveUrl}
+                                      target="_blank"
+                                      rel="noreferrer"
+                                      className="shrink-0 px-2.5 py-1.5 rounded-lg bg-sky-500 hover:bg-sky-400 text-white text-[10px] font-bold flex items-center gap-1 transition-colors"
+                                    >
+                                      <span>Visit Site</span>
+                                      <ExternalLink className="w-2.5 h-2.5" />
+                                    </a>
+                                  </div>
+                                </motion.div>
+                              ) : deviceMode === "mobile" ? (
+                                <motion.div
+                                  key={`${activeProject.id}-inline-mobile`}
+                                  initial={{ opacity: 0 }}
+                                  animate={{ opacity: 1 }}
+                                  exit={{ opacity: 0 }}
+                                  transition={{ duration: 0.2 }}
+                                  className="py-4 flex justify-center w-full bg-slate-900/50"
+                                >
+                                  <div className="w-[180px] h-[300px] rounded-[24px] p-2 bg-slate-900 border-2 border-slate-700 shadow-2xl relative overflow-hidden">
+                                    <div className="w-16 h-3 bg-slate-800 rounded-full mx-auto mb-1.5" />
+                                    <div className="w-full h-[260px] rounded-[16px] overflow-hidden relative">
+                                      <img
+                                        src={activeProject.mobilePreview}
+                                        alt={activeProject.title}
+                                        className="w-full h-full object-cover object-top"
+                                      />
+                                    </div>
+                                  </div>
+                                </motion.div>
+                              ) : null}
+                            </AnimatePresence>
+                          </div>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </motion.div>
               );
             })}
           </div>
 
           {/* Right Side: Interactive Device Viewport Frame */}
-          <div className="lg:col-span-7 sticky top-28">
-            <div className="glass-panel p-4 sm:p-6 rounded-3xl border border-white/10 shadow-2xl relative">
-              
-              {/* Frame Controls Header */}
-              <div className="flex items-center justify-between pb-4 mb-4 border-b border-white/10 flex-wrap gap-3">
-                <div className="flex items-center gap-2">
-                  <div className="flex gap-1.5">
-                    <span className="w-3 h-3 rounded-full bg-red-500/80" />
-                    <span className="w-3 h-3 rounded-full bg-yellow-500/80" />
-                    <span className="w-3 h-3 rounded-full bg-green-500/80" />
+          <div className="hidden lg:block lg:col-span-7 sticky top-28">
+            <div className="glass-panel p-4 sm:p-6 rounded-3xl border border-white/10 shadow-2xl relative min-h-[500px] flex flex-col justify-between">
+              {activeProject ? (
+                <>
+                  {/* Frame Controls Header */}
+                  <div className="flex items-center justify-between pb-4 mb-4 border-b border-white/10 flex-wrap gap-3">
+                    <div className="flex items-center gap-2">
+                      <div className="flex gap-1.5">
+                        <span className="w-3 h-3 rounded-full bg-red-500/80" />
+                        <span className="w-3 h-3 rounded-full bg-yellow-500/80" />
+                        <span className="w-3 h-3 rounded-full bg-green-500/80" />
+                      </div>
+                      <span className="text-xs font-mono text-slate-400 ml-2 truncate max-w-[200px]">
+                        {activeProject.browserUrl || `https://demo.${activeProject.id}.sl-devsolutions.com`}
+                      </span>
+                    </div>
+
+                    {/* View Mode Switcher */}
+                    <div className="flex items-center gap-1 bg-slate-900/90 p-1 rounded-xl border border-white/10">
+                      <button
+                        onClick={() => setDeviceMode("desktop")}
+                        className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors ${
+                          deviceMode === "desktop" ? "bg-sky-500 text-white" : "text-slate-400 hover:text-white"
+                        }`}
+                        data-cursor="DESKTOP"
+                      >
+                        <Laptop className="w-3.5 h-3.5" />
+                        <span className="hidden sm:inline">Desktop</span>
+                      </button>
+                      <button
+                        onClick={() => setDeviceMode("mobile")}
+                        className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors ${
+                          deviceMode === "mobile" ? "bg-sky-500 text-white" : "text-slate-400 hover:text-white"
+                        }`}
+                        data-cursor="MOBILE"
+                      >
+                        <Smartphone className="w-3.5 h-3.5" />
+                        <span className="hidden sm:inline">Mobile</span>
+                      </button>
+                      <button
+                        onClick={() => setActiveCaseStudy(activeProject)}
+                        className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-300 hover:text-white hover:bg-white/10"
+                        data-cursor="SPECS"
+                      >
+                        <Layers className="w-3.5 h-3.5" />
+                        <span className="hidden sm:inline">Case Study</span>
+                      </button>
+                    </div>
                   </div>
-                  <span className="text-xs font-mono text-slate-400 ml-2 truncate max-w-[200px]">
-                    {activeProject.browserUrl || `https://demo.${activeProject.id}.sl-devsolutions.com`}
-                  </span>
-                </div>
 
-                {/* View Mode Switcher */}
-                <div className="flex items-center gap-1 bg-slate-900/90 p-1 rounded-xl border border-white/10">
-                  <button
-                    onClick={() => setDeviceMode("desktop")}
-                    className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors ${
-                      deviceMode === "desktop" ? "bg-sky-500 text-white" : "text-slate-400 hover:text-white"
-                    }`}
-                    data-cursor="DESKTOP"
-                  >
-                    <Laptop className="w-3.5 h-3.5" />
-                    <span className="hidden sm:inline">Desktop</span>
-                  </button>
-                  <button
-                    onClick={() => setDeviceMode("mobile")}
-                    className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors ${
-                      deviceMode === "mobile" ? "bg-sky-500 text-white" : "text-slate-400 hover:text-white"
-                    }`}
-                    data-cursor="MOBILE"
-                  >
-                    <Smartphone className="w-3.5 h-3.5" />
-                    <span className="hidden sm:inline">Mobile</span>
-                  </button>
-                  <button
-                    onClick={() => setActiveCaseStudy(activeProject)}
-                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-300 hover:text-white hover:bg-white/10"
-                    data-cursor="SPECS"
-                  >
-                    <Layers className="w-3.5 h-3.5" />
-                    <span className="hidden sm:inline">Case Study</span>
-                  </button>
-                </div>
-              </div>
-
-              {/* Viewport Screen Content */}
-              <div className="relative overflow-hidden rounded-2xl bg-slate-950 flex items-center justify-center min-h-[380px] sm:min-h-[460px] border border-white/5 w-full">
-                <AnimatePresence mode="wait">
-                  {deviceMode === "desktop" ? (
-                    <motion.div
-                      key={`${activeProject.id}-desktop`}
-                      initial={{ opacity: 0, x: 10 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      exit={{ opacity: 0, x: -10 }}
-                      transition={{ duration: 0.3 }}
-                      className="w-full h-full relative group"
-                    >
-                      <img
-                        src={activeProject.desktopPreview}
-                        alt={activeProject.title}
-                        className="w-full h-[460px] object-cover object-top transition-all duration-700 group-hover:scale-105"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity" />
-                      
-                      <div className="absolute bottom-6 left-6 right-6 p-4 rounded-xl glass-panel border border-white/10 flex items-center justify-between">
-                        <div>
-                          <h4 className="text-base font-bold text-white">{activeProject.title}</h4>
-                          <p className="text-xs text-slate-300">{activeProject.overlaySubtitle || activeProject.subtitle}</p>
-                        </div>
-                        <a
-                          href={activeProject.liveUrl}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="px-4 py-2 rounded-xl bg-sky-500 hover:bg-sky-400 text-white text-xs font-bold flex items-center gap-1.5 transition-colors shadow-lg shadow-sky-500/25"
+                  {/* Viewport Screen Content */}
+                  <div className="relative overflow-hidden rounded-2xl bg-slate-950 flex items-center justify-center min-h-[380px] sm:min-h-[460px] border border-white/5 w-full">
+                    <AnimatePresence mode="wait">
+                      {deviceMode === "desktop" ? (
+                        <motion.div
+                          key={`${activeProject.id}-desktop`}
+                          initial={{ opacity: 0, x: 10 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          exit={{ opacity: 0, x: -10 }}
+                          transition={{ duration: 0.3 }}
+                          className="w-full h-full relative group"
                         >
-                          <span>Visit Live Site</span>
-                          <ExternalLink className="w-3.5 h-3.5" />
-                        </a>
-                      </div>
-                    </motion.div>
-                  ) : deviceMode === "mobile" ? (
-                    <motion.div
-                      key={`${activeProject.id}-mobile`}
-                      initial={{ opacity: 0, x: 10 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      exit={{ opacity: 0, x: -10 }}
-                      transition={{ duration: 0.3 }}
-                      className="py-6 flex justify-center w-full bg-slate-900/50"
-                    >
-                      <div className="w-[260px] h-[440px] rounded-[36px] p-3 bg-slate-900 border-4 border-slate-700 shadow-2xl relative overflow-hidden">
-                        <div className="w-24 h-4 bg-slate-800 rounded-full mx-auto mb-2" />
-                        <div className="w-full h-[390px] rounded-[24px] overflow-hidden relative">
                           <img
-                            src={activeProject.mobilePreview}
+                            src={activeProject.desktopPreview}
                             alt={activeProject.title}
-                            className="w-full h-full object-cover object-top"
+                            className="w-full h-[460px] object-cover object-top transition-all duration-700 group-hover:scale-105"
                           />
-                        </div>
-                      </div>
-                    </motion.div>
-                  ) : null}
-                </AnimatePresence>
-              </div>
+                          <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity" />
+                          
+                          <div className="absolute bottom-6 left-6 right-6 p-4 rounded-xl glass-panel border border-white/10 flex items-center justify-between">
+                            <div>
+                              <h4 className="text-base font-bold text-white">{activeProject.title}</h4>
+                              <p className="text-xs text-slate-300">{activeProject.overlaySubtitle || activeProject.subtitle}</p>
+                            </div>
+                            <a
+                              href={activeProject.liveUrl}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="px-4 py-2 rounded-xl bg-sky-500 hover:bg-sky-400 text-white text-xs font-bold flex items-center gap-1.5 transition-colors shadow-lg shadow-sky-500/25"
+                            >
+                              <span>Visit Live Site</span>
+                              <ExternalLink className="w-3.5 h-3.5" />
+                            </a>
+                          </div>
+                        </motion.div>
+                      ) : deviceMode === "mobile" ? (
+                        <motion.div
+                          key={`${activeProject.id}-mobile`}
+                          initial={{ opacity: 0, x: 10 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          exit={{ opacity: 0, x: -10 }}
+                          transition={{ duration: 0.3 }}
+                          className="py-6 flex justify-center w-full bg-slate-900/50"
+                        >
+                          <div className="w-[260px] h-[440px] rounded-[36px] p-3 bg-slate-900 border-4 border-slate-700 shadow-2xl relative overflow-hidden">
+                            <div className="w-24 h-4 bg-slate-800 rounded-full mx-auto mb-2" />
+                            <div className="w-full h-[390px] rounded-[24px] overflow-hidden relative">
+                              <img
+                                src={activeProject.mobilePreview}
+                                alt={activeProject.title}
+                                className="w-full h-full object-cover object-top"
+                              />
+                            </div>
+                          </div>
+                        </motion.div>
+                      ) : null}
+                    </AnimatePresence>
+                  </div>
+                </>
+              ) : (
+                <div className="flex flex-col items-center justify-center flex-1 py-20 text-center">
+                  <Sparkles className="w-16 h-16 text-slate-700 mb-6 animate-pulse" />
+                  <h3 className="text-xl font-bold text-white mb-2">Interactive Showcase</h3>
+                  <p className="text-sm text-slate-400 max-w-[320px]">
+                    Select a project card from the list on the left to load the live preview workspace.
+                  </p>
+                </div>
+              )}
             </div>
           </div>
         </div>
