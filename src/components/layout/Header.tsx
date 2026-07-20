@@ -62,9 +62,8 @@ export function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
-        scrolled ? "py-3 bg-[rgba(3,7,18,0.75)] backdrop-blur-xl border-b border-white/10 shadow-2xl shadow-cyan-950/20" : "py-6 bg-transparent"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${scrolled ? "py-3 bg-[rgba(3,7,18,0.75)] backdrop-blur-xl border-b border-white/10 shadow-2xl shadow-cyan-950/20" : "py-6 bg-transparent"
+        }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         {/* Brand Logo */}
@@ -115,7 +114,7 @@ export function Header() {
               <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
             </span>
             <span className="text-[11px] font-semibold text-emerald-400 tracking-wide">
-              2 Project Slots Open
+              Project Slots Open
             </span>
           </div>
         </div>
@@ -158,7 +157,7 @@ export function Header() {
             <div className="flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/20 px-3 py-2 rounded-lg mb-2">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
               <span className="text-xs font-semibold text-emerald-400">
-                Taking on Q3 & Q4 Clients
+                Project Slots Open
               </span>
             </div>
 
