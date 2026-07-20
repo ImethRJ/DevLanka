@@ -17,11 +17,13 @@ import {
 } from "lucide-react";
 import burgerDesktop from "@/assests/Burger-Desktop Preview.jpeg";
 import burgerMobile from "@/assests/Burger-Mobile Preview.png";
+import sectorDesktop from "@/assests/Sector-Desktop Preview.png";
+import sectorMobile from "@/assests/Sector-Mobile Preview.png";
 
 export interface Project {
   id: string;
   title: string;
-  category: "SaaS" | "E-Commerce" | "Fintech" | "Landing" | "Food Tech";
+  category: "SaaS" | "E-Commerce" | "Fintech" | "Landing" | "Food Tech" | "EdTech";
   subtitle: string;
   description: string;
   liveUrl: string;
@@ -59,6 +61,29 @@ const PROJECTS: Project[] = [
         "+142% increase in checkout conversions through the interactive Cart Drawer",
         "99.8% perfect Lighthouse performance and accessibility scores",
         "Seamless local spice-metric customizer interaction in sub-50ms",
+      ],
+    },
+  },
+  {
+    id: "sector-institute",
+    title: "Sector Education Institute",
+    category: "EdTech",
+    subtitle: "Modern high-performance digital hub for class timetables, tutor directory, and real-time academic notices.",
+    overlaySubtitle: "Sector Education Institute Website",
+    description: "Modern high-performance digital hub for class timetables, tutor directory, and real-time academic notices.",
+    liveUrl: "https://sectorinstitute.lk/",
+    browserUrl: "https://sectorinstitute.lk/",
+    metrics: "+180% Timetable Access Speed",
+    tags: ["React", "Vite", "Tailwind CSS", "Firebase"],
+    desktopPreview: sectorDesktop.src,
+    mobilePreview: sectorMobile.src,
+    caseStudy: {
+      challenge: "Create a lightweight, high-performance portal that allows administrators to publish real-time timetable changes and notices to thousands of concurrent students without layout shifts or slow load times.",
+      solution: "Developed a dynamic frontend with React and Vite, utilizing Tailwind CSS for styling, Firebase Firestore for instant real-time synchronization, and Firebase Functions for SEO-friendly Server-Side Rendering (SSR).",
+      results: [
+        "Timetable changes propagated to all active student devices in under 200ms",
+        "99% image load optimization using browser-image-compression pre-upload",
+        "Seamless parent-student portal experience on 100% mobile viewports",
       ],
     },
   },
@@ -134,7 +159,7 @@ export function PortfolioShowcase() {
   const [activeCaseStudy, setActiveCaseStudy] = useState<Project | null>(null);
   const [iframeLoaded, setIframeLoaded] = useState(false);
 
-  const categories = ["All", "SaaS", "E-Commerce", "Fintech", "Food Tech"];
+  const categories = ["All", "SaaS", "E-Commerce", "Fintech", "Food Tech", "EdTech"];
 
   const filteredProjects = selectedCategory === "All"
     ? PROJECTS
