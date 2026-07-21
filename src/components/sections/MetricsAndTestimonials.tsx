@@ -106,6 +106,8 @@ export function MetricsAndTestimonials() {
                 <img
                   src={test.avatar}
                   alt={test.name}
+                  loading="lazy"
+                  decoding="async"
                   className="w-11 h-11 rounded-full object-cover border border-sky-400/30"
                 />
                 <div>

@@ -15,10 +15,11 @@ import {
   Code,
   Layers,
 } from "lucide-react";
-import burgerDesktop from "@/assests/Burger-Desktop Preview.jpeg";
-import burgerMobile from "@/assests/Burger-Mobile Preview.png";
-import sectorDesktop from "@/assests/Sector-Desktop Preview.png";
-import sectorMobile from "@/assests/Sector-Mobile Preview.png";
+import burgerDesktop from "@/assests/Burger-Desktop Preview.webp";
+import burgerMobile from "@/assests/Burger-Mobile Preview.webp";
+import sectorDesktop from "@/assests/Sector-Desktop Preview.webp";
+import sectorMobile from "@/assests/Sector-Mobile Preview.webp";
+import Image, { StaticImageData } from "next/image";
 
 export interface Project {
   id: string;
@@ -29,8 +30,8 @@ export interface Project {
   liveUrl: string;
   metrics: string;
   tags: string[];
-  desktopPreview: string;
-  mobilePreview: string;
+  desktopPreview: StaticImageData | string;
+  mobilePreview: StaticImageData | string;
   overlaySubtitle?: string;
   browserUrl?: string;
   caseStudy: {
@@ -52,8 +53,8 @@ const PROJECTS: Project[] = [
     browserUrl: "https://sector-burger.vercel.app/",
     metrics: "+142% Order Checkout Conversion",
     tags: ["Next.js 15", "React 19", "Tailwind v4", "TypeScript"],
-    desktopPreview: burgerDesktop.src,
-    mobilePreview: burgerMobile.src,
+    desktopPreview: burgerDesktop,
+    mobilePreview: burgerMobile,
     caseStudy: {
       challenge: "Create a highly responsive, visually rich ordering platform that handles localized spice level preferences and dynamic cart states without page reloads.",
       solution: "Leveraged Next.js 15 App Router and React 19 Server Components for high-performance content delivery, alongside Tailwind v4 for modern fluid styling and a state-managed Cart Drawer.",
@@ -75,8 +76,8 @@ const PROJECTS: Project[] = [
     browserUrl: "https://sectorinstitute.lk/",
     metrics: "+180% Timetable Access Speed",
     tags: ["React", "Vite", "Tailwind CSS", "Firebase"],
-    desktopPreview: sectorDesktop.src,
-    mobilePreview: sectorMobile.src,
+    desktopPreview: sectorDesktop,
+    mobilePreview: sectorMobile,
     caseStudy: {
       challenge: "Create a lightweight, high-performance portal that allows administrators to publish real-time timetable changes and notices to thousands of concurrent students without layout shifts or slow load times.",
       solution: "Developed a dynamic frontend with React and Vite, utilizing Tailwind CSS for styling, Firebase Firestore for instant real-time synchronization, and Firebase Functions for SEO-friendly Server-Side Rendering (SSR).",
@@ -306,10 +307,11 @@ export function PortfolioShowcase() {
                                   transition={{ duration: 0.2 }}
                                   className="w-full h-full relative group"
                                 >
-                                  <img
+                                  <Image
                                     src={activeProject.desktopPreview}
                                     alt={activeProject.title}
-                                    className="w-full h-[340px] object-cover object-top"
+                                    fill
+                                    className="object-cover object-top"
                                   />
                                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent opacity-80" />
 
@@ -341,10 +343,12 @@ export function PortfolioShowcase() {
                                   <div className="w-[180px] h-[300px] rounded-[24px] p-2 bg-slate-900 border-2 border-slate-700 shadow-2xl relative overflow-hidden">
                                     <div className="w-16 h-3 bg-slate-800 rounded-full mx-auto mb-1.5" />
                                     <div className="w-full h-[260px] rounded-[16px] overflow-hidden relative">
-                                      <img
+                                      <Image
                                         src={activeProject.mobilePreview}
                                         alt={activeProject.title}
-                                        className="w-full h-full object-cover object-top"
+                                        fill
+                                        sizes="180px"
+                                        className="object-cover object-top"
                                       />
                                     </div>
                                   </div>
@@ -422,10 +426,12 @@ export function PortfolioShowcase() {
                           transition={{ duration: 0.3 }}
                           className="w-full h-full relative group"
                         >
-                          <img
+                          <Image
                             src={activeProject.desktopPreview}
                             alt={activeProject.title}
-                            className="w-full h-[460px] object-cover object-top transition-all duration-700 group-hover:scale-105"
+                            fill
+                            className="object-cover object-top transition-all duration-700 group-hover:scale-105"
+                            priority
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity" />
 
@@ -457,10 +463,12 @@ export function PortfolioShowcase() {
                           <div className="w-[260px] h-[440px] rounded-[36px] p-3 bg-slate-900 border-4 border-slate-700 shadow-2xl relative overflow-hidden">
                             <div className="w-24 h-4 bg-slate-800 rounded-full mx-auto mb-2" />
                             <div className="w-full h-[390px] rounded-[24px] overflow-hidden relative">
-                              <img
+                              <Image
                                 src={activeProject.mobilePreview}
                                 alt={activeProject.title}
-                                className="w-full h-full object-cover object-top"
+                                fill
+                                sizes="260px"
+                                className="object-cover object-top"
                               />
                             </div>
                           </div>

@@ -5,6 +5,10 @@ import Lenis from "lenis";
 
 export function SmoothScrollProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
+    // Don't run smooth scrolling on touch devices or mobile viewports
+    const isTouchDevice = window.matchMedia("(pointer: coarse)").matches || window.innerWidth < 768;
+    if (isTouchDevice) return;
+
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),

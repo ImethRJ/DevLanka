@@ -12,6 +12,10 @@ export function CustomCursor() {
   useEffect(() => {
     setIsMounted(true);
 
+    // Don't run mousemove listeners on touch devices or mobile screens
+    const isTouchDevice = window.matchMedia("(pointer: coarse)").matches || window.innerWidth < 768;
+    if (isTouchDevice) return;
+
     const onMouseMove = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
 
