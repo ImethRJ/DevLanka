@@ -305,7 +305,7 @@ export function PortfolioShowcase() {
                                   animate={{ opacity: 1 }}
                                   exit={{ opacity: 0 }}
                                   transition={{ duration: 0.2 }}
-                                  className="w-full h-full relative group"
+                                  className="absolute inset-0 group"
                                 >
                                   <Image
                                     src={activeProject.desktopPreview}
@@ -425,7 +425,7 @@ export function PortfolioShowcase() {
                           animate={{ opacity: 1, x: 0 }}
                           exit={{ opacity: 0, x: -10 }}
                           transition={{ duration: 0.3 }}
-                          className="w-full h-full relative group"
+                          className="absolute inset-0 group"
                         >
                           <Image
                             src={activeProject.desktopPreview}
