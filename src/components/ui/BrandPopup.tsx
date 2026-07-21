@@ -11,6 +11,10 @@ export function BrandPopup() {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
+    // Don't show popup on mobile devices to optimize WebKit rendering and mobile UX
+    const isMobile = window.innerWidth < 768;
+    if (isMobile) return;
+
     // Check if popup was already shown in this session
     try {
       const isShown = sessionStorage.getItem("sl-devsolutions-brand-popup-shown");
