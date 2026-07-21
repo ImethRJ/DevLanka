@@ -35,7 +35,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${jakartaSans.variable} ${jetbrainsMono.variable} dark scroll-smooth`}>
+    <html lang="en" className={`${jakartaSans.variable} ${jetbrainsMono.variable} dark`}>
       <body className="font-sans bg-slate-950 text-slate-100 antialiased min-h-screen">
         <SmoothScrollProvider>
           <CustomCursor />
