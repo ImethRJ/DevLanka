@@ -8,13 +8,18 @@ export function CustomCursor() {
   const [cursorText, setCursorText] = useState("");
   const [isHovered, setIsHovered] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
+  const [isTouch, setIsTouch] = useState(false);
 
   useEffect(() => {
-    setIsMounted(true);
-
-    // Don't run mousemove listeners on touch devices or mobile screens
+    // Don't run mousemove listeners or mount JSX on touch devices or mobile screens
     const isTouchDevice = window.matchMedia("(pointer: coarse)").matches || window.innerWidth < 768;
-    if (isTouchDevice) return;
+    if (isTouchDevice) {
+      setIsTouch(true);
+      setIsMounted(true);
+      return;
+    }
+
+    setIsMounted(true);
 
     const onMouseMove = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
@@ -37,7 +42,7 @@ export function CustomCursor() {
     return () => window.removeEventListener("mousemove", onMouseMove);
   }, []);
 
-  if (!isMounted) return null;
+  if (!isMounted || isTouch) return null;
 
   return (
     <div className="pointer-events-none fixed inset-0 z-50 overflow-hidden hidden md:block">

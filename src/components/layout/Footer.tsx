@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { Heart, ArrowUp, Globe, Share2, MessageSquare, Terminal } from "lucide-react";
 import Image from "next/image";
-import LogoImage from "@/assests/SL-DevSolutions Logo.png";
+import LogoImage from "@/assests/SL-DevSolutions Logo.webp";
 
 export function Footer() {
   const [time, setTime] = useState<string>("");

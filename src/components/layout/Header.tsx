@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Sparkles, Menu, X, ArrowUpRight } from "lucide-react";
 import Image from "next/image";
-import LogoImage from "@/assests/SL-DevSolutions Logo.png";
+import LogoImage from "@/assests/SL-DevSolutions Logo.webp";
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -12,7 +12,8 @@ export function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      const isScrolled = window.scrollY > 20;
+      setScrolled((prev) => (prev !== isScrolled ? isScrolled : prev));
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);

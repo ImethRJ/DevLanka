@@ -12,18 +12,31 @@ export function BrandPopup() {
 
   useEffect(() => {
     // Check if popup was already shown in this session
-    const isShown = sessionStorage.getItem("sl-devsolutions-brand-popup-shown");
-    if (!isShown) {
+    try {
+      const isShown = sessionStorage.getItem("sl-devsolutions-brand-popup-shown");
+      if (!isShown) {
+        const timer = setTimeout(() => {
+          setIsOpen(true);
+        }, 1200); // Elegant delay after page loads
+        return () => clearTimeout(timer);
+      }
+    } catch (e) {
+      // Fallback for Safari Private Browsing or disabled storage environments
+      console.warn("sessionStorage is unavailable:", e);
       const timer = setTimeout(() => {
         setIsOpen(true);
-      }, 1200); // Elegant delay after page loads
+      }, 1200);
       return () => clearTimeout(timer);
     }
   }, []);
 
   const handleClose = () => {
     setIsOpen(false);
-    sessionStorage.setItem("sl-devsolutions-brand-popup-shown", "true");
+    try {
+      sessionStorage.setItem("sl-devsolutions-brand-popup-shown", "true");
+    } catch (e) {
+      console.warn("Failed to save popup state in sessionStorage:", e);
+    }
   };
 
   return (
