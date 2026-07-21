@@ -31,7 +31,7 @@ export function ServicesBento() {
             whileHover={{ y: -4 }}
             className="md:col-span-7 glass-card p-8 rounded-3xl relative overflow-hidden group border border-white/10"
           >
-            <div className="absolute top-0 right-0 w-64 h-64 bg-sky-500/10 rounded-full blur-3xl pointer-events-none group-hover:bg-sky-500/20 transition-all" />
+            <div className="hidden md:block absolute top-0 right-0 w-64 h-64 bg-sky-500/10 rounded-full blur-3xl pointer-events-none group-hover:bg-sky-500/20 transition-all" />
             
             <div className="w-12 h-12 rounded-2xl bg-sky-500/10 border border-sky-400/20 flex items-center justify-center text-sky-400 mb-6 group-hover:scale-110 transition-transform">
               <Code className="w-6 h-6" />
@@ -57,7 +57,7 @@ export function ServicesBento() {
             whileHover={{ y: -4 }}
             className="md:col-span-5 glass-card p-8 rounded-3xl relative overflow-hidden group border border-white/10"
           >
-            <div className="absolute top-0 right-0 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl pointer-events-none group-hover:bg-purple-500/20 transition-all" />
+            <div className="hidden md:block absolute top-0 right-0 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl pointer-events-none group-hover:bg-purple-500/20 transition-all" />
 
             <div className="w-12 h-12 rounded-2xl bg-purple-500/10 border border-purple-400/20 flex items-center justify-center text-purple-400 mb-6 group-hover:scale-110 transition-transform">
               <Layout className="w-6 h-6" />

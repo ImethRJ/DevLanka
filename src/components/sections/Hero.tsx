@@ -20,9 +20,9 @@ export function Hero() {
   return (
     <section className="relative min-h-screen pt-32 pb-20 flex flex-col justify-center overflow-hidden bg-grid-pattern">
       {/* Background Ambient Glowing Orbs */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-tr from-sky-500/20 via-indigo-500/10 to-purple-600/20 rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute top-1/3 -left-32 w-96 h-96 bg-cyan-500/15 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-10 -right-32 w-96 h-96 bg-purple-500/15 rounded-full blur-[120px] pointer-events-none" />
+      <div className="hidden md:block absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-tr from-sky-500/20 via-indigo-500/10 to-purple-600/20 rounded-full blur-[140px] pointer-events-none" />
+      <div className="hidden md:block absolute top-1/3 -left-32 w-96 h-96 bg-cyan-500/15 rounded-full blur-[120px] pointer-events-none" />
+      <div className="hidden md:block absolute bottom-10 -right-32 w-96 h-96 bg-purple-500/15 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
         {/* Top Announcement Pill */}
