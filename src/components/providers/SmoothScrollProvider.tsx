@@ -7,7 +7,15 @@ export function SmoothScrollProvider({ children }: { children: React.ReactNode }
   useEffect(() => {
     // Don't run smooth scrolling on touch devices or mobile viewports
     const isTouchDevice = window.matchMedia("(pointer: coarse)").matches || window.innerWidth < 768;
-    if (isTouchDevice) return;
+    if (isTouchDevice) {
+      // Safari repaint & scroll-trigger wake-up fix for mobile viewports
+      const timer = setTimeout(() => {
+        window.scrollBy(0, 1);
+        window.scrollBy(0, -1);
+        void document.body.offsetHeight; // Force layout recalculation and paint pass
+      }, 80);
+      return () => clearTimeout(timer);
+    }
 
     const lenis = new Lenis({
       duration: 1.2,
