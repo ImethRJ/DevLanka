@@ -16,10 +16,10 @@ export function ProjectEstimator() {
   const [formData, setFormData] = useState({ name: "", email: "", notes: "" });
 
   const projectTypes = [
-    { id: "SaaS", name: "SaaS & Web Application", base: 4500, icon: "💻" },
-    { id: "E-Commerce", name: "Luxury E-Commerce", base: 3800, icon: "🛍️" },
-    { id: "Brand", name: "Agency & Brand Showcase", base: 2900, icon: "🎨" },
-    { id: "Speed", name: "Speed & Core Web Vitals Fix", base: 1800, icon: "⚡" },
+    { id: "SaaS", name: "SaaS & Web Application", base: 150000, icon: "💻" },
+    { id: "E-Commerce", name: "E-Commerce & Storefront", base: 120000, icon: "🛍️" },
+    { id: "Brand", name: "Agency & Brand Showcase", base: 85000, icon: "🎨" },
+    { id: "Speed", name: "Speed & Core Web Vitals Fix", base: 50000, icon: "⚡" },
   ];
 
   const timelines = [
@@ -29,11 +29,11 @@ export function ProjectEstimator() {
   ];
 
   const featuresList = [
-    { name: "Framer Motion & Smooth Scroll", cost: 500 },
-    { name: "Sanity / Headless CMS Integration", cost: 650 },
-    { name: "Three.js / 3D Canvas Effects", cost: 900 },
-    { name: "Stripe & Subscriptions Setup", cost: 600 },
-    { name: "Multi-Language (i18n)", cost: 450 },
+    { name: "Framer Motion & Smooth Scroll", cost: 25000 },
+    { name: "Sanity / Headless CMS Integration", cost: 35000 },
+    { name: "Three.js / 3D Canvas Effects", cost: 45000 },
+    { name: "Payment Gateway & Checkout Setup", cost: 30000 },
+    { name: "Multi-Language (i18n)", cost: 20000 },
   ];
 
   const toggleFeature = (featName: string) => {
@@ -144,7 +144,7 @@ export function ProjectEstimator() {
                     >
                       <div className="text-2xl mb-2">{p.icon}</div>
                       <div className="font-bold text-sm text-white mb-1">{p.name}</div>
-                      <div className="text-xs text-slate-400">Starting ~ ${p.base}</div>
+                      <div className="text-xs text-slate-400">Starting ~ LKR {p.base.toLocaleString()}</div>
                     </button>
                   ))}
                 </div>
@@ -189,7 +189,7 @@ export function ProjectEstimator() {
                             </span>
                             {f.name}
                           </span>
-                          <span className="text-sky-400 font-mono">+${f.cost}</span>
+                          <span className="text-sky-400 font-mono">+LKR {f.cost.toLocaleString()}</span>
                         </button>
                       );
                     })}
@@ -243,7 +243,7 @@ export function ProjectEstimator() {
                     Estimated Investment Range
                   </span>
                   <div className="text-3xl sm:text-5xl font-extrabold text-white mb-2 gradient-text-accent">
-                    ${estimate.min.toLocaleString()} - ${estimate.max.toLocaleString()} USD
+                    LKR {estimate.min.toLocaleString()} - LKR {estimate.max.toLocaleString()}
                   </div>
                   <p className="text-xs text-slate-300">
                     Estimated Completion: <span className="font-bold text-white">2 - 4 Weeks</span> (Includes Code, Motion & Deployment)

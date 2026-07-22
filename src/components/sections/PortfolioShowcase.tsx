@@ -128,7 +128,7 @@ const PROJECTS: Project[] = [
       challenge: "Transform a traditional offline interior studio into a global digital brand capable of taking international commissions.",
       solution: "Created an interactive 3D virtual showroom coupled with a frictionless multi-currency order system.",
       results: [
-        "$1.4M generated in direct online inquiries within 90 days",
+        "LKR 5M+ generated in direct online inquiries within 90 days",
         "Zero-layout shift page transitions with Framer Motion",
         "Integrated headless Sanity CMS for instant content updates",
       ],

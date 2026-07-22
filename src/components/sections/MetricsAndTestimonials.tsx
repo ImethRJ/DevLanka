@@ -5,40 +5,37 @@ import { Star, Quote, TrendingUp, ShieldCheck, Award, Sparkles } from "lucide-re
 
 export function MetricsAndTestimonials() {
   const stats = [
-    { value: "$25M+", label: "Client Revenue Generated" },
-    { value: "45+", label: "Custom Builds Launched" },
-    { value: "<100ms", label: "Average First Contentful Paint" },
-    { value: "5.0 ★", label: "Average Rating on Clutch & G2" },
+    { value: "LKR 1.4M+", label: "Client Revenue & Value Driven" },
+    { value: "10+", label: "Production Platforms Built" },
+    { value: "<120ms", label: "Average Response & Load Time" },
+    { value: "100%", label: "Client Satisfaction Rate" },
   ];
 
   const testimonials = [
     {
       name: "Dinesh Ranasinghe",
       role: "Operations Lead, SL-GreenRoot Market",
-      avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80",
       quote: "SL-DevSolutions engineered our secure supermarket inventory & POS checkout system with extreme security precision. The dual-pass nh3 sanitization and atomic transactions eliminated inventory mismatches completely.",
       result: "100% Secure POS & RBAC",
     },
     {
-      name: "Elena Rostova",
-      role: "Creative Director, LuxeStudio",
-      avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=200&q=80",
-      quote: "Finding an agency that understands both ultra-luxury design aesthetics AND deep technical engineering is rare. SL-DevSolutions delivered a masterpiece that feels native and liquid on every screen size.",
-      result: "$1.4M Pipeline Inquiries",
+      name: "Ruwan Jayasinghe",
+      role: "Director, Sector Education Institute",
+      quote: "SL-DevSolutions built a lightweight, high-performance web portal for our institute. Timetable changes and academic notices now sync in real-time across thousands of student devices without delay.",
+      result: "+180% Access Speed",
     },
     {
-      name: "David Chen",
-      role: "CTO, NovaPay Global",
-      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80",
-      quote: "The speed and attention to code quality were unmatched. Our Lighthouse performance score went from a sluggish 42 to a solid 100/100 across mobile and desktop. Highly recommended!",
-      result: "100/100 Core Web Vitals",
+      name: "Nipuna Perera",
+      role: "Founder, Sector Burger",
+      quote: "The interactive online ordering platform and real-time cart drawer transformed our customer experience. Orders are smooth, fast, and checkout conversion grew significantly from day one.",
+      result: "+142% Order Conversion",
     },
   ];
 
   return (
     <section id="results" className="py-28 relative z-10 bg-slate-950">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-400/20 text-xs font-semibold text-emerald-400 mb-3">
@@ -46,8 +43,8 @@ export function MetricsAndTestimonials() {
             <span>Proven Impact</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-4">
-            Real Metrics. <br />
-            <span className="gradient-text-accent">Unfiltered Founder Feedback.</span>
+            Real Startup Metrics. <br />
+            <span className="gradient-text-accent">Unfiltered Client Feedback.</span>
           </h2>
         </div>
 
@@ -103,13 +100,9 @@ export function MetricsAndTestimonials() {
 
               {/* Founder Profile */}
               <div className="flex items-center gap-3 pt-4 border-t border-white/10">
-                <img
-                  src={test.avatar}
-                  alt={test.name}
-                  loading="lazy"
-                  decoding="async"
-                  className="w-11 h-11 rounded-full object-cover border border-sky-400/30"
-                />
+                <div className="w-10 h-10 rounded-xl bg-sky-500/10 border border-sky-400/20 flex items-center justify-center text-sky-400 font-bold text-sm shrink-0">
+                  {test.name.charAt(0)}
+                </div>
                 <div>
                   <h4 className="text-sm font-bold text-white">{test.name}</h4>
                   <p className="text-xs text-slate-400">{test.role}</p>
