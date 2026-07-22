@@ -13,11 +13,11 @@ export function MetricsAndTestimonials() {
 
   const testimonials = [
     {
-      name: "Marcus Vance",
-      role: "Founder & CEO, Aetheria AI",
+      name: "Dinesh Ranasinghe",
+      role: "Operations Lead, SL-GreenRoot Market",
       avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80",
-      quote: "SL-DevSolutions rebuilt our web platform from the ground up in just 3 weeks. The custom Framer Motion animations and live dashboard speeds blew our investors away. Our conversion rate jumped 240% within a month.",
-      result: "+240% Conversion Lift",
+      quote: "SL-DevSolutions engineered our secure supermarket inventory & POS checkout system with extreme security precision. The dual-pass nh3 sanitization and atomic transactions eliminated inventory mismatches completely.",
+      result: "100% Secure POS & RBAC",
     },
     {
       name: "Elena Rostova",

@@ -19,6 +19,8 @@ import burgerDesktop from "@/assests/Burger-Desktop Preview.webp";
 import burgerMobile from "@/assests/Burger-Mobile Preview.webp";
 import sectorDesktop from "@/assests/Sector-Desktop Preview.webp";
 import sectorMobile from "@/assests/Sector-Mobile Preview.webp";
+import greenrootDesktop from "@/assests/GreenRoot - Desktop Preview.jpeg";
+import greenrootMobile from "@/assests/GreenRoot - Mobile Preview.jpeg";
 import Image, { StaticImageData } from "next/image";
 
 export interface Project {
@@ -89,23 +91,25 @@ const PROJECTS: Project[] = [
     },
   },
   {
-    id: "aetheria-ai",
-    title: "Aetheria AI Platform",
-    category: "SaaS",
-    subtitle: "Enterprise AI & Predictive Analytics Dashboard",
-    description: "A real-time data visualization hub with high-frequency live charting, automated insights, and custom AI chat capabilities.",
-    liveUrl: "https://wikipedia.org", // Reliable high-uptime embed target
-    metrics: "+240% User Retention Rate",
-    tags: ["Next.js 15", "React 19", "Tailwind CSS", "Recharts", "Vercel"],
-    desktopPreview: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
-    mobilePreview: "https://images.unsplash.com/photo-1616469829941-c7200edec809?auto=format&fit=crop&w=600&q=80",
+    id: "greenroot-market",
+    title: "SL-GreenRoot Market",
+    category: "E-Commerce",
+    subtitle: "Secure Inventory Management System & Cashier POS Terminal for Sri Lankan Supermarkets",
+    overlaySubtitle: "Secure Supermarket Inventory & POS Terminal",
+    description: "Full-stack inventory management system and cashier checkout terminal built with Django 5.0, dual-pass nh3 XSS protection, RBAC security, and atomic POS transactions.",
+    liveUrl: "https://green-root-market.vercel.app/",
+    browserUrl: "https://green-root-market.vercel.app/",
+    metrics: "100% Pass Rate / Dual-Pass XSS Defense",
+    tags: ["Python 3.11", "Django 5.0", "Tailwind CSS", "PostgreSQL", "nh3 Security", "Vercel"],
+    desktopPreview: greenrootDesktop,
+    mobilePreview: greenrootMobile,
     caseStudy: {
-      challenge: "The client needed to handle streaming telemetry data from 100K+ concurrent IoT devices without browser performance degradation.",
-      solution: "Engineered a Next.js App Router architecture leveraging Web Workers, canvas rendering, and optimized WebSocket handlers.",
+      challenge: "Engineered for a Sri Lankan supermarket requiring strict Role-Based Access Control (RBAC), dual-pass XSS input sanitization for supplier notes, and atomic cashier POS checkouts.",
+      solution: "Built a hardened Django 5.0 backend utilizing Rust-based nh3 sanitization, atomic database transactions (transaction.atomic), WhiteNoise production static serving, and Vercel serverless WSGI deployment.",
       results: [
-        "Sub-100ms real-time chart rendering latencies",
-        "240% increase in daily active user session duration",
-        "100/100 Lighthouse performance rating on desktop",
+        "100% automated test pass rate validating dual-pass XSS protection & hardened cookies",
+        "Role-Based Access Control enforcing clear privilege boundaries between Cashier POS and Manager Portal",
+        "Seamless serverless deployment on Vercel backed by PostgreSQL / Supabase cloud database",
       ],
     },
   },
