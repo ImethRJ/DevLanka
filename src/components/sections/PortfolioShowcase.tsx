@@ -120,7 +120,7 @@ const PROJECTS: Project[] = [
     subtitle: "A multi-page marketing site for a coffee shop, built with Next.js (App Router), TypeScript, Tailwind CSS, and Framer Motion.",
     overlaySubtitle: "Coffee Shop Marketing Site & Interactive Menu",
     description: "A multi-page marketing site for a coffee shop featuring 11 static routes, Unsplash CDN loader, filterable photo grid, and interactive menu by category.",
-    liveUrl: "#",
+    liveUrl: "https://lucky-cafe-rho.vercel.app/",
     browserUrl: "https://lucky-cafe-rho.vercel.app/",
     metrics: "11 Static Routes / Production Build",
     tags: ["Next.js (App Router)", "TypeScript", "Tailwind CSS", "Framer Motion"],
