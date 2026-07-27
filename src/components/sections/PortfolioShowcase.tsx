@@ -121,7 +121,7 @@ const PROJECTS: Project[] = [
     overlaySubtitle: "Coffee Shop Marketing Site & Interactive Menu",
     description: "A multi-page marketing site for a coffee shop featuring 11 static routes, Unsplash CDN loader, filterable photo grid, and interactive menu by category.",
     liveUrl: "#",
-    browserUrl: "https://lucky-cafe.vercel.app/",
+    browserUrl: "https://lucky-cafe-rho.vercel.app/",
     metrics: "11 Static Routes / Production Build",
     tags: ["Next.js (App Router)", "TypeScript", "Tailwind CSS", "Framer Motion"],
     desktopPreview: "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=1200&q=80",
