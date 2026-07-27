@@ -136,6 +136,29 @@ const PROJECTS: Project[] = [
       ],
     },
   },
+  {
+    id: "leaf-bloom",
+    title: "Leaf & Bloom",
+    category: "E-Commerce",
+    subtitle: "Sleek, modern e-commerce platform for houseplant lovers with curated catalog, care guides & micro-animations.",
+    overlaySubtitle: "Modern Houseplant E-Commerce Store",
+    description: "An editorial-grade e-commerce experience built with Next.js 16 App Router, React 19, Tailwind CSS v4, and Framer Motion featuring organic Sage Green aesthetic, care guides, and persistent cart.",
+    liveUrl: "https://leaf-bloom-iota.vercel.app/",
+    browserUrl: "https://leaf-bloom-iota.vercel.app/",
+    metrics: "Next.js 16 / React 19 / Tailwind v4",
+    tags: ["Next.js 16", "React 19", "Tailwind v4", "Framer Motion", "TypeScript"],
+    desktopPreview: "https://images.unsplash.com/photo-1485955900006-10f4d324d411?auto=format&fit=crop&w=1200&q=80",
+    mobilePreview: "https://images.unsplash.com/photo-1512428559087-560fa5ceab42?auto=format&fit=crop&w=600&q=80",
+    caseStudy: {
+      challenge: "Design an editorial-grade e-commerce experience for plant enthusiasts requiring real-time state management, organic design system, interactive catalog filtering, and persistent cart workflows.",
+      solution: "Built using Next.js 16 App Router, React 19, Tailwind CSS v4, and Framer Motion. Engineered organic color palette (Sage Green, Warm Cream, Deep Charcoal Ink), plant care guides, and fluid transitions.",
+      results: [
+        "Editorial-grade houseplant shopping experience with organic visual style & care guides",
+        "Real-time client-side state management for cart drawers & interactive catalog filters",
+        "Ultra-fast page loads powered by Next.js 16 App Router & React 19 Server Components",
+      ],
+    },
+  },
 ];
 
 export function PortfolioShowcase() {
