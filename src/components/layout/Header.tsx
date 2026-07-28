@@ -24,7 +24,7 @@ export function Header() {
     { name: "Capabilities", href: "#services" },
     { name: "How We Work", href: "#process" },
     { name: "Client Results", href: "#results" },
-    { name: "Project Estimator", href: "#estimator" },
+    { name: "Let's Talk", href: "#contact" },
   ];
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {

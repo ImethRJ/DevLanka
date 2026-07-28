@@ -88,11 +88,11 @@ export function Hero() {
             </a>
 
             <a
-              href="#estimator"
+              href="#contact"
               className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl glass-card text-slate-200 hover:text-white font-semibold text-base border border-white/10 hover:border-sky-400/40 transition-all duration-300"
-              data-cursor="CALCULATE"
+              data-cursor="CONTACT"
             >
-              <span>Instant Project Calculator</span>
+              <span>Contact & Inquiry</span>
             </a>
           </motion.div>
 

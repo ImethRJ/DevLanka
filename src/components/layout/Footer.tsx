@@ -70,7 +70,7 @@ export function Footer() {
               <li><a href="#services" className="hover:text-sky-400 transition-colors">Services Bento</a></li>
               <li><a href="#process" className="hover:text-sky-400 transition-colors">How We Work</a></li>
               <li><a href="#results" className="hover:text-sky-400 transition-colors">Client Testimonials</a></li>
-              <li><a href="#estimator" className="hover:text-sky-400 transition-colors">Project Estimator</a></li>
+              <li><a href="#contact" className="hover:text-sky-400 transition-colors">Let's Talk Projects</a></li>
             </ul>
           </div>
 
