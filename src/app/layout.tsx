@@ -86,8 +86,22 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "SL-DevSolutions",
+    alternateName: ["SL DevSolutions", "SL-DevSolutions Studio"],
+    url: "https://sl-devsolutions.vercel.app",
+  };
+
   return (
     <html lang="en" className={`${jakartaSans.variable} ${jetbrainsMono.variable} dark`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className="font-sans bg-slate-950 text-slate-100 antialiased min-h-screen">
         <SmoothScrollProvider>
           <CustomCursor />
