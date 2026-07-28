@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Sparkles, Menu, X, ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import LogoImage from "@/assests/SL-DevSolutions Logo.webp";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -120,8 +121,9 @@ export function Header() {
           </div>
         </div>
 
-        {/* CTA Button */}
-        <div className="hidden sm:flex items-center gap-4">
+        {/* CTA Button & Theme Toggle */}
+        <div className="hidden sm:flex items-center gap-3">
+          <ThemeToggle />
           <a
             href="#estimator"
             onClick={(e) => handleNavClick(e, "#estimator")}
@@ -136,10 +138,21 @@ export function Header() {
           </a>
         </div>
 
-        {/* Mobile Hamburger Button */}
+        {/* Mobile Actions & Hamburger Button */}
+        <div className="flex items-center gap-2 sm:hidden lg:hidden">
+          <ThemeToggle />
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="p-2 rounded-xl bg-slate-900 border border-white/10 text-slate-300 hover:text-white"
+            aria-label="Toggle menu"
+          >
+            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+        </div>
+
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="lg:hidden p-2 rounded-xl bg-slate-900 border border-white/10 text-slate-300 hover:text-white"
+          className="hidden lg:hidden sm:flex p-2 rounded-xl bg-slate-900 border border-white/10 text-slate-300 hover:text-white"
           aria-label="Toggle menu"
         >
           {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -155,11 +168,14 @@ export function Header() {
             exit={{ opacity: 0, height: 0 }}
             className="lg:hidden bg-slate-950/95 backdrop-blur-2xl border-b border-white/10 px-4 pt-4 pb-6 space-y-4 shadow-2xl"
           >
-            <div className="flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/20 px-3 py-2 rounded-lg mb-2">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              <span className="text-xs font-semibold text-emerald-400">
-                Project Slots Open
-              </span>
+            <div className="flex items-center justify-between bg-emerald-500/10 border border-emerald-500/20 px-3 py-2 rounded-lg mb-2">
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                <span className="text-xs font-semibold text-emerald-400">
+                  Project Slots Open
+                </span>
+              </div>
+              <ThemeToggle />
             </div>
 
             <nav className="flex flex-col gap-2">
