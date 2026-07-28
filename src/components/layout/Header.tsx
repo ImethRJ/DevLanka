@@ -126,11 +126,11 @@ export function Header() {
             href="#estimator"
             onClick={(e) => handleNavClick(e, "#estimator")}
             className="relative inline-flex items-center justify-center p-0.5 overflow-hidden text-xs font-semibold text-white rounded-full group bg-gradient-to-br from-sky-400 via-indigo-500 to-purple-600 group-hover:from-sky-400 group-hover:to-purple-600 hover:shadow-lg hover:shadow-sky-500/30 transition-all duration-300 active:scale-95"
-            data-cursor="HIRE US"
+            data-cursor="GET STARTED"
           >
             <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-slate-950 rounded-full group-hover:bg-opacity-0 flex items-center gap-2">
               <Sparkles className="w-3.5 h-3.5 text-sky-400 group-hover:text-white transition-colors" />
-              <span>Get Estimate</span>
+              <span>GET STARTED</span>
               <ArrowUpRight className="w-3.5 h-3.5 opacity-70 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
             </span>
           </a>
