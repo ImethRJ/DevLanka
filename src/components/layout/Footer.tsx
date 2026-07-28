@@ -37,7 +37,7 @@ export function Footer() {
           
           {/* Brand Col */}
           <div className="md:col-span-5 space-y-4">
-            <a href="#" className="flex items-center gap-2.5 text-xl font-extrabold text-slate-900 dark:text-white">
+            <a href="#" className="flex items-center gap-2.5 text-xl font-extrabold text-white">
               <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-sky-400 to-indigo-600 p-[1px] shadow-lg shadow-sky-500/20 flex items-center justify-center overflow-hidden">
                 <div className="w-full h-full bg-slate-950 rounded-[11px] flex items-center justify-center p-1.5">
                   <Image
@@ -49,35 +49,35 @@ export function Footer() {
               </div>
               <span className="tracking-tight">SL-DevSolutions</span>
             </a>
-            <p className="text-slate-600 dark:text-slate-400 leading-relaxed max-w-sm">
+            <p className="text-slate-400 leading-relaxed max-w-sm">
               Full-Stack Web Engineering & UI/UX Architecture Studio. Crafting ultra-fluid, high-converting digital products for ambitious global brands.
             </p>
 
             {/* Live Clock & Location */}
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-200 dark:bg-slate-900 border border-white/10 font-mono text-[11px] text-slate-700 dark:text-slate-300">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-900 border border-white/10 font-mono text-[11px] text-slate-300">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
               <span>Colombo, LK</span>
-              <span className="text-slate-400">|</span>
-              <span className="text-sky-500 dark:text-sky-400 font-bold">{time || "12:00:00 PM"}</span>
+              <span className="text-slate-500">|</span>
+              <span className="text-sky-400 font-bold">{time || "12:00:00 PM"}</span>
             </div>
           </div>
 
           {/* Nav Links */}
           <div className="md:col-span-3 space-y-3">
-            <h4 className="text-slate-900 dark:text-white font-bold text-xs uppercase tracking-wider font-mono">Navigation</h4>
-            <ul className="space-y-2 text-slate-600 dark:text-slate-400">
-              <li><a href="#portfolio" className="hover:text-sky-500 dark:hover:text-sky-400 transition-colors">Live Portfolio</a></li>
-              <li><a href="#services" className="hover:text-sky-500 dark:hover:text-sky-400 transition-colors">Services Bento</a></li>
-              <li><a href="#process" className="hover:text-sky-500 dark:hover:text-sky-400 transition-colors">How We Work</a></li>
-              <li><a href="#results" className="hover:text-sky-500 dark:hover:text-sky-400 transition-colors">Client Testimonials</a></li>
-              <li><a href="#estimator" className="hover:text-sky-500 dark:hover:text-sky-400 transition-colors">Project Estimator</a></li>
+            <h4 className="text-white font-bold text-xs uppercase tracking-wider font-mono">Navigation</h4>
+            <ul className="space-y-2">
+              <li><a href="#portfolio" className="hover:text-sky-400 transition-colors">Live Portfolio</a></li>
+              <li><a href="#services" className="hover:text-sky-400 transition-colors">Services Bento</a></li>
+              <li><a href="#process" className="hover:text-sky-400 transition-colors">How We Work</a></li>
+              <li><a href="#results" className="hover:text-sky-400 transition-colors">Client Testimonials</a></li>
+              <li><a href="#estimator" className="hover:text-sky-400 transition-colors">Project Estimator</a></li>
             </ul>
           </div>
 
           {/* Social Links & Back to Top */}
           <div className="md:col-span-4 space-y-4 flex flex-col justify-between">
             <div>
-              <h4 className="text-slate-900 dark:text-white font-bold text-xs uppercase tracking-wider font-mono mb-3">Connect With Us</h4>
+              <h4 className="text-white font-bold text-xs uppercase tracking-wider font-mono mb-3">Connect With Us</h4>
               <div className="flex items-center gap-3">
                 <a href="https://github.com" target="_blank" rel="noreferrer" className="p-2.5 rounded-xl bg-slate-900 border border-white/10 hover:text-sky-400 hover:border-sky-400/40 transition-all flex items-center gap-1.5">
                   <Terminal className="w-4 h-4" />

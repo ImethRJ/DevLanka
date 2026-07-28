@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { SmoothScrollProvider } from "@/components/providers/SmoothScrollProvider";
-import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { CustomCursor } from "@/components/ui/CustomCursor";
 
 const jakartaSans = Plus_Jakarta_Sans({
@@ -104,12 +103,10 @@ export default function RootLayout({
         />
       </head>
       <body className="font-sans bg-slate-950 text-slate-100 antialiased min-h-screen">
-        <ThemeProvider>
-          <SmoothScrollProvider>
-            <CustomCursor />
-            {children}
-          </SmoothScrollProvider>
-        </ThemeProvider>
+        <SmoothScrollProvider>
+          <CustomCursor />
+          {children}
+        </SmoothScrollProvider>
       </body>
     </html>
   );

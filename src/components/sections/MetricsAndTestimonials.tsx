@@ -42,7 +42,7 @@ export function MetricsAndTestimonials() {
             <Sparkles className="w-3.5 h-3.5" />
             <span>Proven Impact</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-4">
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-4">
             Real Startup Metrics. <br />
             <span className="gradient-text-accent">Unfiltered Client Feedback.</span>
           </h2>
@@ -104,7 +104,7 @@ export function MetricsAndTestimonials() {
                   {test.name.charAt(0)}
                 </div>
                 <div>
-                  <h4 className="text-sm font-bold text-slate-900 dark:text-white">{test.name}</h4>
+                  <h4 className="text-sm font-bold text-white">{test.name}</h4>
                   <p className="text-xs text-slate-400">{test.role}</p>
                 </div>
               </div>

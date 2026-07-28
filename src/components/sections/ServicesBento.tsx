@@ -14,7 +14,7 @@ export function ServicesBento() {
             <Sparkles className="w-3.5 h-3.5" />
             <span>Capabilities & Tech Stack</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-4">
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-4">
             Everything You Need To Build A <br />
             <span className="gradient-text-accent">World-Class Web Presence.</span>
           </h2>
@@ -37,7 +37,7 @@ export function ServicesBento() {
               <Code className="w-6 h-6" />
             </div>
 
-            <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-3">Full-Stack Web Engineering</h3>
+            <h3 className="text-2xl font-bold text-white mb-3">Full-Stack Web Engineering</h3>
             <p className="text-slate-300 text-sm leading-relaxed mb-6">
               Custom Web Applications, Client Portals, and Enterprise Dashboards engineered with Next.js 15, React 19, and TypeScript for maximum scalability.
             </p>
@@ -63,7 +63,7 @@ export function ServicesBento() {
               <Layout className="w-6 h-6" />
             </div>
 
-            <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-3">UI/UX & High-End Motion</h3>
+            <h3 className="text-2xl font-bold text-white mb-3">UI/UX & High-End Motion</h3>
             <p className="text-slate-300 text-sm leading-relaxed mb-6">
               Interactive micro-interactions, liquid cursors, smooth parallax scrolling, and bespoke layout morphing powered by Framer Motion & GSAP.
             </p>
@@ -83,7 +83,7 @@ export function ServicesBento() {
               <Gauge className="w-6 h-6" />
             </div>
 
-            <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Performance Optimization</h3>
+            <h3 className="text-xl font-bold text-white mb-2">Performance Optimization</h3>
             <p className="text-slate-300 text-xs leading-relaxed mb-4">
               Instant sub-100ms FCP load times, automated asset compression, and guaranteed 95+ Core Web Vitals scores.
             </p>
@@ -102,7 +102,7 @@ export function ServicesBento() {
               <Database className="w-6 h-6" />
             </div>
 
-            <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Headless CMS & Commerce</h3>
+            <h3 className="text-xl font-bold text-white mb-2">Headless CMS & Commerce</h3>
             <p className="text-slate-300 text-xs leading-relaxed mb-4">
               Sanity CMS, Stripe Payments, and Shopify Hydrogen setups so your team can edit content without dev dependency.
             </p>
@@ -121,7 +121,7 @@ export function ServicesBento() {
               <Cpu className="w-6 h-6" />
             </div>
 
-            <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">AI Agent & API Integrations</h3>
+            <h3 className="text-xl font-bold text-white mb-2">AI Agent & API Integrations</h3>
             <p className="text-slate-300 text-xs leading-relaxed mb-4">
               Integrate custom LLMs, automated lead enrichment, CRM syncs, and real-time WebSocket pipelines.
             </p>
