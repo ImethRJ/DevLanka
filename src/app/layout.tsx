@@ -16,7 +16,7 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://sl-devsolutions.vercel.app"),
-  title: "SL-DevSolutions — Senior Full-Stack Engineering & UI/UX Architecture Studio",
+  title: "SL-DevSolutions — Senior Full-Stack & UI/UX Studio",
   description:
     "SL-DevSolutions crafts ultra-fluid, high-converting bespoke websites and full-stack web applications for ambitious brands worldwide.",
   alternates: {
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "SL-DevSolutions — Senior Full-Stack Engineering & UI/UX Architecture Studio",
+    title: "SL-DevSolutions — Senior Full-Stack & UI/UX Studio",
     description:
       "SL-DevSolutions crafts ultra-fluid, high-converting bespoke websites and full-stack web applications for ambitious brands worldwide.",
     url: "https://sl-devsolutions.vercel.app",
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "SL-DevSolutions — Senior Full-Stack Engineering & UI/UX Architecture Studio",
+    title: "SL-DevSolutions — Senior Full-Stack & UI/UX Studio",
     description:
       "SL-DevSolutions crafts ultra-fluid, high-converting bespoke websites and full-stack web applications for ambitious brands worldwide.",
     images: ["/SL-DevSolutions Banner.webp"],
