@@ -57,6 +57,9 @@ export const metadata: Metadata = {
       "SL-DevSolutions crafts ultra-fluid, high-converting bespoke websites and full-stack web applications for ambitious brands worldwide.",
     images: ["/SL-DevSolutions Banner.webp"],
   },
+  verification: {
+    google: "googlea1eec9e2d3304b87",
+  },
   icons: {
     icon: [
       { url: "/icon.png", type: "image/png" },
