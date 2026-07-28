@@ -3,21 +3,47 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import confetti from "canvas-confetti";
-import { MessageSquare, ArrowRight, Mail, Copy, Check, CheckCircle, ShieldCheck, Zap, Clock } from "lucide-react";
+import { MessageSquare, ArrowRight, Mail, Copy, Check, CheckCircle, ShieldCheck, Zap, Clock, Loader2 } from "lucide-react";
 
 export function ProjectEstimator() {
   const [copied, setCopied] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [formData, setFormData] = useState({ name: "", email: "", notes: "" });
 
-  const handleFormSubmit = (e: React.FormEvent) => {
+  const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setFormSubmitted(true);
-    confetti({
-      particleCount: 100,
-      spread: 90,
-      origin: { y: 0.5 },
-    });
+    setLoading(true);
+    setErrorMsg("");
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok || data.error) {
+        throw new Error(data.error || "Failed to send inquiry.");
+      }
+
+      setFormSubmitted(true);
+      confetti({
+        particleCount: 100,
+        spread: 90,
+        origin: { y: 0.5 },
+      });
+    } catch (err: any) {
+      console.error("Submission error:", err);
+      setErrorMsg(err.message || "Something went wrong. Please try again or email us directly.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const copyEmail = () => {
@@ -130,6 +156,12 @@ export function ProjectEstimator() {
                 </div>
               ) : (
                 <form onSubmit={handleFormSubmit} className="space-y-4">
+                  {errorMsg && (
+                    <div className="p-3 rounded-xl bg-red-500/15 border border-red-500/30 text-red-400 text-xs font-medium">
+                      {errorMsg}
+                    </div>
+                  )}
+
                   <div>
                     <label className="text-xs font-medium text-slate-300 block mb-1">Your Name</label>
                     <input
@@ -167,11 +199,21 @@ export function ProjectEstimator() {
 
                   <button
                     type="submit"
-                    className="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-sky-400 via-indigo-500 to-purple-600 text-white font-bold text-xs shadow-lg shadow-sky-500/25 hover:shadow-sky-500/40 transition-all duration-200 flex items-center justify-center gap-2"
+                    disabled={loading}
+                    className="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-sky-400 via-indigo-500 to-purple-600 text-white font-bold text-xs shadow-lg shadow-sky-500/25 hover:shadow-sky-500/40 transition-all duration-200 flex items-center justify-center gap-2 disabled:opacity-60"
                     data-cursor="SUBMIT"
                   >
-                    <span>Send Project Inquiry</span>
-                    <ArrowRight className="w-4 h-4" />
+                    {loading ? (
+                      <>
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                        <span>Sending Inquiry...</span>
+                      </>
+                    ) : (
+                      <>
+                        <span>Send Project Inquiry</span>
+                        <ArrowRight className="w-4 h-4" />
+                      </>
+                    )}
                   </button>
                 </form>
               )}
