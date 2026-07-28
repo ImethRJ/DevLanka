@@ -19,8 +19,13 @@ export const metadata: Metadata = {
   description:
     "SL-DevSolutions crafts ultra-fluid, high-converting bespoke websites and full-stack web applications for ambitious brands worldwide.",
   icons: {
-    icon: "/SL-DevSolutions Logo.webp",
-    apple: "/SL-DevSolutions Logo.webp",
+    icon: [
+      { url: "/icon.png", type: "image/png" },
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/SL-DevSolutions Logo.webp", type: "image/webp" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: "/apple-icon.png",
   },
   keywords: [
     "SL-DevSolutions",
