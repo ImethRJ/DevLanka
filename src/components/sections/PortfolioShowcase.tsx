@@ -14,6 +14,7 @@ import {
   X,
   Code,
   Layers,
+  Lock,
 } from "lucide-react";
 import burgerDesktop from "@/assests/Burger-Desktop Preview.webp";
 import burgerMobile from "@/assests/Burger-Mobile Preview.webp";
@@ -21,6 +22,7 @@ import sectorDesktop from "@/assests/Sector-Desktop Preview.webp";
 import sectorMobile from "@/assests/Sector-Mobile Preview.webp";
 import greenrootDesktop from "@/assests/GreenRoot - Desktop Preview.jpeg";
 import greenrootMobile from "@/assests/GreenRoot - Mobile Preview.jpeg";
+import LogoImage from "@/assests/SL-DevSolutions Logo.webp";
 import Image, { StaticImageData } from "next/image";
 
 export interface Project {
@@ -283,44 +285,74 @@ export function PortfolioShowcase() {
                         onClick={(e) => e.stopPropagation()}
                       >
                         <div className="glass-panel p-3 sm:p-4 rounded-2xl border border-white/10 shadow-2xl relative bg-slate-950/40">
-                          {/* Frame Controls Header */}
-                          <div className="flex items-center justify-between pb-3 mb-3 border-b border-white/10 flex-wrap gap-2">
-                            <div className="flex items-center gap-1.5">
-                              <div className="flex gap-1">
-                                <span className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
-                                <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/80" />
-                                <span className="w-2.5 h-2.5 rounded-full bg-green-500/80" />
+                          {/* Frame Controls Header (Browser Mockup Tab & URL Bar) */}
+                          <div className="space-y-2 pb-3 mb-3 border-b border-white/10">
+                            <div className="flex items-center justify-between gap-2 flex-wrap">
+                              <div className="flex items-center gap-2 min-w-0">
+                                <div className="flex gap-1 shrink-0">
+                                  <span className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
+                                  <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/80" />
+                                  <span className="w-2.5 h-2.5 rounded-full bg-green-500/80" />
+                                </div>
+
+                                {/* Browser Tab Mockup */}
+                                <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-t-lg bg-slate-900/90 border border-b-0 border-white/10 text-[10px] text-slate-200 max-w-[180px] sm:max-w-[240px] truncate shadow-sm">
+                                  <div className="w-3.5 h-3.5 rounded-full bg-slate-950 p-0.5 flex items-center justify-center shrink-0 border border-white/10">
+                                    <Image
+                                      src={LogoImage}
+                                      alt="SL-DevSolutions Logo"
+                                      className="w-full h-full object-contain"
+                                    />
+                                  </div>
+                                  <span className="truncate font-medium text-[10px]">
+                                    SL-DevSolutions — {activeProject?.title}
+                                  </span>
+                                  <X className="w-2.5 h-2.5 text-slate-400 shrink-0 ml-auto" />
+                                </div>
                               </div>
-                              <span className="text-[10px] font-mono text-slate-400 ml-1.5 truncate max-w-[140px]">
-                                {activeProject?.browserUrl || `https://demo.${activeProject?.id}.sl-devsolutions.com`}
-                              </span>
+
+                              {/* View Mode Switcher */}
+                              <div className="flex items-center gap-0.5 bg-slate-900/90 p-0.5 rounded-lg border border-white/5">
+                                <button
+                                  onClick={() => setDeviceMode("desktop")}
+                                  className={`flex items-center gap-1 px-2 py-1 rounded-md text-[10px] font-semibold transition-colors ${deviceMode === "desktop" ? "bg-sky-500 text-white" : "text-slate-400 hover:text-white"
+                                    }`}
+                                >
+                                  <Laptop className="w-3 h-3" />
+                                  <span>Desktop</span>
+                                </button>
+                                <button
+                                  onClick={() => setDeviceMode("mobile")}
+                                  className={`flex items-center gap-1 px-2 py-1 rounded-md text-[10px] font-semibold transition-colors ${deviceMode === "mobile" ? "bg-sky-500 text-white" : "text-slate-400 hover:text-white"
+                                    }`}
+                                >
+                                  <Smartphone className="w-3 h-3" />
+                                  <span>Mobile</span>
+                                </button>
+                                <button
+                                  onClick={() => activeProject && setActiveCaseStudy(activeProject)}
+                                  className="flex items-center gap-1 px-2 py-1 rounded-md text-[10px] font-semibold text-slate-300 hover:text-white hover:bg-white/5"
+                                >
+                                  <Layers className="w-3 h-3" />
+                                  <span>Specs</span>
+                                </button>
+                              </div>
                             </div>
 
-                            {/* View Mode Switcher */}
-                            <div className="flex items-center gap-0.5 bg-slate-900/90 p-0.5 rounded-lg border border-white/5">
-                              <button
-                                onClick={() => setDeviceMode("desktop")}
-                                className={`flex items-center gap-1 px-2 py-1 rounded-md text-[10px] font-semibold transition-colors ${deviceMode === "desktop" ? "bg-sky-500 text-white" : "text-slate-400 hover:text-white"
-                                  }`}
-                              >
-                                <Laptop className="w-3 h-3" />
-                                <span>Desktop</span>
-                              </button>
-                              <button
-                                onClick={() => setDeviceMode("mobile")}
-                                className={`flex items-center gap-1 px-2 py-1 rounded-md text-[10px] font-semibold transition-colors ${deviceMode === "mobile" ? "bg-sky-500 text-white" : "text-slate-400 hover:text-white"
-                                  }`}
-                              >
-                                <Smartphone className="w-3 h-3" />
-                                <span>Mobile</span>
-                              </button>
-                              <button
-                                onClick={() => activeProject && setActiveCaseStudy(activeProject)}
-                                className="flex items-center gap-1 px-2 py-1 rounded-md text-[10px] font-semibold text-slate-300 hover:text-white hover:bg-white/5"
-                              >
-                                <Layers className="w-3 h-3" />
-                                <span>Specs</span>
-                              </button>
+                            {/* URL Bar */}
+                            <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-900/80 border border-white/10 text-[10px]">
+                              <Lock className="w-3 h-3 text-emerald-400 shrink-0" />
+                              <div className="w-3.5 h-3.5 rounded-full bg-slate-950 p-0.5 flex items-center justify-center shrink-0 border border-white/10">
+                                <Image
+                                  src={LogoImage}
+                                  alt="SL-DevSolutions Logo"
+                                  className="w-full h-full object-contain"
+                                />
+                              </div>
+                              <span className="font-mono text-[10px] text-slate-300 truncate">
+                                <span className="text-emerald-400 font-semibold">https://</span>
+                                {activeProject?.browserUrl ? activeProject.browserUrl.replace("https://", "") : `demo.${activeProject?.id}.sl-devsolutions.com`}
+                              </span>
                             </div>
                           </div>
 
@@ -400,47 +432,81 @@ export function PortfolioShowcase() {
             <div className="glass-panel p-4 sm:p-6 rounded-3xl border border-white/10 shadow-2xl relative min-h-[500px] flex flex-col justify-between">
               {activeProject ? (
                 <>
-                  {/* Frame Controls Header */}
-                  <div className="flex items-center justify-between pb-4 mb-4 border-b border-white/10 flex-wrap gap-3">
-                    <div className="flex items-center gap-2">
-                      <div className="flex gap-1.5">
-                        <span className="w-3 h-3 rounded-full bg-red-500/80" />
-                        <span className="w-3 h-3 rounded-full bg-yellow-500/80" />
-                        <span className="w-3 h-3 rounded-full bg-green-500/80" />
+                  {/* Frame Controls Header (Browser Mockup Tab & URL Bar) */}
+                  <div className="space-y-3 pb-4 mb-4 border-b border-white/10">
+                    {/* Top Tab Bar */}
+                    <div className="flex items-center justify-between gap-3">
+                      <div className="flex items-center gap-3 min-w-0">
+                        {/* Window Controls */}
+                        <div className="flex gap-1.5 shrink-0">
+                          <span className="w-3 h-3 rounded-full bg-red-500/80 hover:bg-red-500 transition-colors" />
+                          <span className="w-3 h-3 rounded-full bg-yellow-500/80 hover:bg-yellow-500 transition-colors" />
+                          <span className="w-3 h-3 rounded-full bg-green-500/80 hover:bg-green-500 transition-colors" />
+                        </div>
+
+                        {/* Browser Tab Mockup */}
+                        <div className="flex items-center gap-2 px-3 py-1.5 rounded-t-xl bg-slate-900/90 border border-b-0 border-white/10 text-xs text-slate-200 max-w-[280px] sm:max-w-[340px] truncate shadow-sm">
+                          <div className="w-4 h-4 rounded-full bg-slate-950 p-0.5 flex items-center justify-center shrink-0 border border-white/10">
+                            <Image
+                              src={LogoImage}
+                              alt="SL-DevSolutions Logo"
+                              className="w-full h-full object-contain"
+                            />
+                          </div>
+                          <span className="truncate font-medium text-[11px] sm:text-xs">
+                            SL-DevSolutions — {activeProject.title}
+                          </span>
+                          <button className="text-slate-400 hover:text-white shrink-0 ml-auto p-0.5 rounded hover:bg-white/10 transition-colors">
+                            <X className="w-3 h-3" />
+                          </button>
+                        </div>
                       </div>
-                      <span className="text-xs font-mono text-slate-400 ml-2 truncate max-w-[200px]">
-                        {activeProject.browserUrl || `https://demo.${activeProject.id}.sl-devsolutions.com`}
-                      </span>
+
+                      {/* View Mode Switcher */}
+                      <div className="flex items-center gap-1 bg-slate-900/90 p-1 rounded-xl border border-white/10 shrink-0">
+                        <button
+                          onClick={() => setDeviceMode("desktop")}
+                          className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors ${deviceMode === "desktop" ? "bg-sky-500 text-white" : "text-slate-400 hover:text-white"
+                            }`}
+                          data-cursor="DESKTOP"
+                        >
+                          <Laptop className="w-3.5 h-3.5" />
+                          <span className="hidden sm:inline">Desktop</span>
+                        </button>
+                        <button
+                          onClick={() => setDeviceMode("mobile")}
+                          className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors ${deviceMode === "mobile" ? "bg-sky-500 text-white" : "text-slate-400 hover:text-white"
+                            }`}
+                          data-cursor="MOBILE"
+                        >
+                          <Smartphone className="w-3.5 h-3.5" />
+                          <span className="hidden sm:inline">Mobile</span>
+                        </button>
+                        <button
+                          onClick={() => setActiveCaseStudy(activeProject)}
+                          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-300 hover:text-white hover:bg-white/10"
+                          data-cursor="SPECS"
+                        >
+                          <Layers className="w-3.5 h-3.5" />
+                          <span className="hidden sm:inline">Case Study</span>
+                        </button>
+                      </div>
                     </div>
 
-                    {/* View Mode Switcher */}
-                    <div className="flex items-center gap-1 bg-slate-900/90 p-1 rounded-xl border border-white/10">
-                      <button
-                        onClick={() => setDeviceMode("desktop")}
-                        className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors ${deviceMode === "desktop" ? "bg-sky-500 text-white" : "text-slate-400 hover:text-white"
-                          }`}
-                        data-cursor="DESKTOP"
-                      >
-                        <Laptop className="w-3.5 h-3.5" />
-                        <span className="hidden sm:inline">Desktop</span>
-                      </button>
-                      <button
-                        onClick={() => setDeviceMode("mobile")}
-                        className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors ${deviceMode === "mobile" ? "bg-sky-500 text-white" : "text-slate-400 hover:text-white"
-                          }`}
-                        data-cursor="MOBILE"
-                      >
-                        <Smartphone className="w-3.5 h-3.5" />
-                        <span className="hidden sm:inline">Mobile</span>
-                      </button>
-                      <button
-                        onClick={() => setActiveCaseStudy(activeProject)}
-                        className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-300 hover:text-white hover:bg-white/10"
-                        data-cursor="SPECS"
-                      >
-                        <Layers className="w-3.5 h-3.5" />
-                        <span className="hidden sm:inline">Case Study</span>
-                      </button>
+                    {/* URL Bar */}
+                    <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-900/80 border border-white/10 text-xs text-slate-300">
+                      <Lock className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                      <div className="w-4 h-4 rounded-full bg-slate-950 p-0.5 flex items-center justify-center shrink-0 border border-white/10">
+                        <Image
+                          src={LogoImage}
+                          alt="SL-DevSolutions Logo"
+                          className="w-full h-full object-contain"
+                        />
+                      </div>
+                      <span className="font-mono text-[11px] text-slate-300 truncate">
+                        <span className="text-emerald-400 font-semibold">https://</span>
+                        {activeProject.browserUrl ? activeProject.browserUrl.replace("https://", "") : `demo.${activeProject.id}.sl-devsolutions.com`}
+                      </span>
                     </div>
                   </div>
 

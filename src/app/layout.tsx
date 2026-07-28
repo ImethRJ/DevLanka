@@ -18,6 +18,10 @@ export const metadata: Metadata = {
   title: "SL-DevSolutions — Senior Full-Stack Engineering & UI/UX Architecture Studio",
   description:
     "SL-DevSolutions crafts ultra-fluid, high-converting bespoke websites and full-stack web applications for ambitious brands worldwide.",
+  icons: {
+    icon: "/SL-DevSolutions Logo.webp",
+    apple: "/SL-DevSolutions Logo.webp",
+  },
   keywords: [
     "SL-DevSolutions",
     "Full-Stack Web Development",
