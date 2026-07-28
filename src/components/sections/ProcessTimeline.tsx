@@ -49,11 +49,11 @@ export function ProcessTimeline() {
             <Sparkles className="w-3.5 h-3.5" />
             <span>Methodology</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-4">
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-4">
             How We Take Projects From <br />
             <span className="gradient-text-accent">Concept To High-Converting Reality.</span>
           </h2>
-          <p className="text-slate-400 text-base">
+          <p className="text-slate-600 dark:text-slate-400 text-base">
             A battle-tested 4-phase execution framework designed for speed, clarity, and zero unexpected delays.
           </p>
         </div>
@@ -74,19 +74,19 @@ export function ProcessTimeline() {
                 <div>
                   {/* Step Header */}
                   <div className="flex items-center justify-between mb-6">
-                    <span className="text-3xl font-extrabold font-mono text-sky-400/40 group-hover:text-sky-400 transition-colors">
+                    <span className="text-3xl font-extrabold font-mono text-sky-500/60 dark:text-sky-400/40 group-hover:text-sky-500 dark:group-hover:text-sky-400 transition-colors">
                       {step.num}
                     </span>
-                    <span className="text-[11px] font-semibold px-2.5 py-1 rounded-full bg-slate-900 text-slate-300 border border-white/10">
+                    <span className="text-[11px] font-semibold px-2.5 py-1 rounded-full bg-slate-200 dark:bg-slate-900 text-slate-700 dark:text-slate-300 border border-white/10">
                       {step.duration}
                     </span>
                   </div>
 
-                  <div className="w-12 h-12 rounded-2xl bg-sky-500/10 border border-sky-400/20 flex items-center justify-center text-sky-400 mb-4 group-hover:scale-110 transition-transform">
+                  <div className="w-12 h-12 rounded-2xl bg-sky-500/10 border border-sky-400/20 flex items-center justify-center text-sky-500 dark:text-sky-400 mb-4 group-hover:scale-110 transition-transform">
                     <Icon className="w-6 h-6" />
                   </div>
 
-                  <h3 className="text-xl font-bold text-white mb-2">{step.title}</h3>
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">{step.title}</h3>
                   <p className="text-xs text-slate-300 leading-relaxed mb-6">{step.desc}</p>
                 </div>
 

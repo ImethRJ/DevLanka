@@ -187,7 +187,7 @@ export function PortfolioShowcase() {
               <Sparkles className="w-3.5 h-3.5" />
               <span>Interactive Portfolio Showcase</span>
             </div>
-            <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
+            <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight">
               Tested In Production. <br />
               <span className="gradient-text-accent">Live Demos & Proven ROI.</span>
             </h2>
@@ -245,14 +245,14 @@ export function PortfolioShowcase() {
                     </span>
                   </div>
 
-                  <h3 className="text-xl font-bold text-white mb-1">{project.title}</h3>
-                  <p className="text-xs text-slate-400 line-clamp-2 mb-4 leading-relaxed">
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-1">{project.title}</h3>
+                  <p className="text-xs text-slate-600 dark:text-slate-400 line-clamp-2 mb-4 leading-relaxed">
                     {project.subtitle}
                   </p>
 
                   <div className="flex flex-wrap gap-1.5 mb-4">
                     {project.tags.map((tag) => (
-                      <span key={tag} className="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">
+                      <span key={tag} className="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
                         {tag}
                       </span>
                     ))}

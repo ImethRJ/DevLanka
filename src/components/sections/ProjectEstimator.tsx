@@ -101,7 +101,7 @@ export function ProjectEstimator() {
             <Calculator className="w-3.5 h-3.5" />
             <span>Instant Cost Calculator</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-4">
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-4">
             Estimate Your Project Scope. <br />
             <span className="gradient-text-accent">Zero Friction. Instant Clarity.</span>
           </h2>
