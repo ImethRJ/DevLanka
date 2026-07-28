@@ -21,7 +21,7 @@ export function ProjectEstimator() {
   };
 
   const copyEmail = () => {
-    navigator.clipboard.writeText("hello@sl-devsolutions.com");
+    navigator.clipboard.writeText("devsolutionssl@gmail.com");
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -30,7 +30,7 @@ export function ProjectEstimator() {
     <section id="contact" className="py-28 relative z-10 bg-slate-950/90 border-t border-white/10">
       <span id="estimator" className="absolute -top-24 left-0" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-400/20 text-xs font-semibold text-sky-400 mb-3">
@@ -47,7 +47,7 @@ export function ProjectEstimator() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center max-w-5xl mx-auto">
-          
+
           {/* Left Column: Direct Info & Guarantees (Span 5) */}
           <div className="lg:col-span-5 space-y-6">
             <div className="glass-panel p-6 sm:p-8 rounded-3xl border border-sky-400/20 space-y-6 shadow-xl">
