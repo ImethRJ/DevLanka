@@ -97,7 +97,7 @@ export function ProjectEstimator() {
                 </div>
                 <div>
                   <span className="text-[10px] uppercase font-mono text-slate-400 block font-bold">Direct Email</span>
-                  <span className="text-xs font-bold text-white">hello@sl-devsolutions.com</span>
+                  <span className="text-xs font-bold text-white">devsolutionssl@gmail.com</span>
                 </div>
               </div>
 
