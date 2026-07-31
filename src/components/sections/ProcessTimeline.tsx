@@ -1,106 +1,121 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Compass, PenTool, Code, Rocket, CheckCircle2, Sparkles } from "lucide-react";
+import { FileText, Cpu, ShieldCheck, Rocket, CheckCircle2, ArrowRight } from "lucide-react";
 
 export function ProcessTimeline() {
   const steps = [
     {
-      num: "01",
-      title: "Discovery & Blueprinting",
-      duration: "Days 1 - 3",
-      icon: Compass,
-      desc: "We analyze your business goals, target buyer persona, and brand identity to construct a detailed architectural plan, sitemap, and feature matrix.",
-      deliverables: ["Technical Architecture Specs", "Information Architecture", "Project Roadmap"],
+      phase: "01",
+      title: "Architecture & Schema Blueprint",
+      duration: "Days 1 - 4",
+      icon: FileText,
+      description: "We define database schemas, technical API specs, wireframes, and performance requirements before writing code.",
+      input: "Business Goals & User Flow Matrix",
+      output: "Approved Technical Spec & System Architecture",
     },
     {
-      num: "02",
-      title: "UI/UX & Interactive Prototyping",
-      duration: "Days 4 - 10",
-      icon: PenTool,
-      desc: "We craft high-fidelity Figma designs, custom color palettes, fluid typography systems, and interactive motion prototypes before writing code.",
-      deliverables: ["High-Fidelity Figma Systems", "Interactive Motion Spec", "Clickable Prototypes"],
+      phase: "02",
+      title: "Core Engine & Frontend Build",
+      duration: "Days 5 - 16",
+      icon: Cpu,
+      description: "Engineering the application with Next.js 15, React 19, custom database models, and accessible responsive interfaces.",
+      input: "Technical Spec & Brand Design Tokens",
+      output: "Production Codebase & API Integrations",
     },
     {
-      num: "03",
-      title: "Full-Stack Development & Motion",
-      duration: "Days 11 - 21",
-      icon: Code,
-      desc: "Our senior engineers bring the designs to life using Next.js 15, Framer Motion, Lenis scroll, and headless CMS integrations with 60 FPS animations.",
-      deliverables: ["Clean Next.js 15 Codebase", "Headless CMS Setup", "Custom Micro-interactions"],
+      phase: "03",
+      title: "Edge QA & Security Audit",
+      duration: "Days 17 - 21",
+      icon: ShieldCheck,
+      description: "Rigorous cross-device testing, keyboard navigation audit, vulnerability scans, and Singapore/Colombo edge latency tuning.",
+      input: "Staging Deployment & Load Tests",
+      output: "WCAG & Security Audit Pass Report",
     },
     {
-      num: "04",
-      title: "Optimization, QA & Global Launch",
-      duration: "Days 22 - 25",
+      phase: "04",
+      title: "Edge Deployment & SLA Scale",
+      duration: "Days 22 - 25+",
       icon: Rocket,
-      desc: "Rigorous cross-browser testing on iOS, Android, and Desktop, speed tuning for <100ms load times, SEO meta setup, and Vercel/Cloudflare deployment.",
-      deliverables: ["100/100 Lighthouse Score", "SEO Meta & Analytics Setup", "Production Deployment"],
+      description: "Deployment to Vercel/Cloudflare edge servers, DNS setup, real-time error logging, and post-launch maintenance SLA.",
+      input: "Validated Codebase & DNS Records",
+      output: "Live Production Site & Ongoing SLA Support",
     },
   ];
 
   return (
-    <section id="process" className="py-28 relative z-10 bg-slate-950/90 border-t border-white/10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+    <section id="process" className="relative py-24 bg-[#141210] border-b border-[#38332E]">
+      {/* Atmospheric Unsplash Background Overlay */}
+      <div 
+        className="absolute inset-0 pointer-events-none bg-cover bg-center opacity-30"
+        style={{
+          backgroundImage: `linear-gradient(to bottom, rgba(20, 18, 16, 0.68), rgba(20, 18, 16, 0.90)), url('https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1920&q=80')`,
+        }}
+      />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-20">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-400/20 text-xs font-semibold text-cyan-400 mb-3">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>Methodology</span>
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 border-b border-[#38332E] pb-6 gap-4">
+          <div>
+            <div className="font-mono text-xs text-[#D4A359] tracking-widest uppercase mb-2">
+              // AGENCY METHODOLOGY
+            </div>
+            <h2 className="font-serif text-3xl sm:text-5xl font-bold text-[#F4EFE6]">
+              Sequential Project Execution Pipeline
+            </h2>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-4">
-            How We Take Projects From <br />
-            <span className="gradient-text-accent">Concept To High-Converting Reality.</span>
-          </h2>
-          <p className="text-slate-400 text-base">
-            A battle-tested 4-phase execution framework designed for speed, clarity, and zero unexpected delays.
+          <p className="font-sans text-sm text-[#A39B8E] max-w-md">
+            Our strict 4-stage engineering pipeline ensures predictable delivery timelines, zero scope drift, and robust production code.
           </p>
         </div>
 
-        {/* Timeline Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative">
+        {/* Sequential Horizontal Connector Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {steps.map((step, idx) => {
             const Icon = step.icon;
             return (
               <motion.div
-                key={step.num}
-                initial={{ opacity: 0, y: 30 }}
+                key={step.phase}
+                initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: idx * 0.15 }}
-                className="glass-card p-6 rounded-3xl border border-white/10 relative flex flex-col justify-between group hover:border-sky-400/40"
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                className="craft-card rounded p-6 flex flex-col justify-between relative"
               >
                 <div>
-                  {/* Step Header */}
-                  <div className="flex items-center justify-between mb-6">
-                    <span className="text-3xl font-extrabold font-mono text-sky-400/40 group-hover:text-sky-400 transition-colors">
-                      {step.num}
-                    </span>
-                    <span className="text-[11px] font-semibold px-2.5 py-1 rounded-full bg-slate-900 text-slate-300 border border-white/10">
+                  {/* Phase Header */}
+                  <div className="flex items-center justify-between mb-6 pb-3 border-b border-[#38332E]">
+                    <div className="font-mono text-xs font-bold text-[#C85A32]">
+                      PHASE _{step.phase}
+                    </div>
+                    <span className="font-mono text-[10px] text-[#A39B8E] bg-[#141210] border border-[#38332E] px-2 py-0.5 rounded">
                       {step.duration}
                     </span>
                   </div>
 
-                  <div className="w-12 h-12 rounded-2xl bg-sky-500/10 border border-sky-400/20 flex items-center justify-center text-sky-400 mb-4 group-hover:scale-110 transition-transform">
-                    <Icon className="w-6 h-6" />
+                  <div className="w-10 h-10 rounded bg-[#141210] border border-[#38332E] flex items-center justify-center text-[#D4A359] mb-4">
+                    <Icon className="w-5 h-5" />
                   </div>
 
-                  <h3 className="text-xl font-bold text-white mb-2">{step.title}</h3>
-                  <p className="text-xs text-slate-300 leading-relaxed mb-6">{step.desc}</p>
+                  <h3 className="font-serif text-xl font-bold text-[#F4EFE6] mb-3">
+                    {step.title}
+                  </h3>
+
+                  <p className="font-sans text-xs text-[#A39B8E] leading-relaxed mb-6">
+                    {step.description}
+                  </p>
                 </div>
 
-                {/* Deliverables List */}
-                <div className="pt-4 border-t border-white/10 space-y-2">
-                  <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400 font-bold block mb-1">
-                    Key Deliverables:
-                  </span>
-                  {step.deliverables.map((deliv, i) => (
-                    <div key={i} className="flex items-center gap-2 text-xs text-slate-300 font-medium">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                      <span>{deliv}</span>
-                    </div>
-                  ))}
+                {/* Input -> Output Pipeline Contract */}
+                <div className="pt-4 border-t border-[#38332E] font-mono text-[11px] space-y-2">
+                  <div>
+                    <span className="text-[#A39B8E]">INPUT: </span>
+                    <span className="text-[#F4EFE6]">{step.input}</span>
+                  </div>
+                  <div>
+                    <span className="text-[#2D5D4B]">OUTPUT: </span>
+                    <span className="text-[#D4A359]">{step.output}</span>
+                  </div>
                 </div>
               </motion.div>
             );

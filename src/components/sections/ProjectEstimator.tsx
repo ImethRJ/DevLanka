@@ -3,14 +3,19 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import confetti from "canvas-confetti";
-import { MessageSquare, ArrowRight, Mail, Copy, Check, CheckCircle, ShieldCheck, Zap, Clock, Loader2 } from "lucide-react";
+import { Mail, Copy, Check, ShieldCheck, Clock, Send, Loader2 } from "lucide-react";
 
 export function ProjectEstimator() {
   const [copied, setCopied] = useState(false);
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
   const [formSubmitted, setFormSubmitted] = useState(false);
-  const [formData, setFormData] = useState({ name: "", email: "", notes: "" });
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    notes: "",
+  });
 
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -29,18 +34,18 @@ export function ProjectEstimator() {
       const data = await res.json();
 
       if (!res.ok || data.error) {
-        throw new Error(data.error || "Failed to send inquiry.");
+        throw new Error(data.error || "Failed to send project inquiry.");
       }
 
       setFormSubmitted(true);
       confetti({
-        particleCount: 100,
-        spread: 90,
-        origin: { y: 0.5 },
+        particleCount: 80,
+        spread: 70,
+        origin: { y: 0.6 },
       });
     } catch (err: any) {
       console.error("Submission error:", err);
-      setErrorMsg(err.message || "Something went wrong. Please try again or email us directly.");
+      setErrorMsg(err.message || "Something went wrong. Please email us directly at devsolutionssl@gmail.com.");
     } finally {
       setLoading(false);
     }
@@ -53,173 +58,186 @@ export function ProjectEstimator() {
   };
 
   return (
-    <section id="contact" className="py-28 relative z-10 bg-slate-950/90 border-t border-white/10">
-      <span id="estimator" className="absolute -top-24 left-0" />
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="contact" className="relative py-24 bg-[#141210] border-b border-[#38332E]">
+      {/* Atmospheric Unsplash Background Overlay */}
+      <div 
+        className="absolute inset-0 pointer-events-none bg-cover bg-center opacity-30"
+        style={{
+          backgroundImage: `linear-gradient(to bottom, rgba(20, 18, 16, 0.68), rgba(20, 18, 16, 0.90)), url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1920&q=80')`,
+        }}
+      />
 
+      <span id="estimator" className="absolute -top-24 left-0" />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-400/20 text-xs font-semibold text-sky-400 mb-3">
-            <MessageSquare className="w-3.5 h-3.5" />
-            <span>Direct Architecture Support</span>
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 border-b border-[#38332E] pb-6 gap-4">
+          <div>
+            <div className="font-mono text-xs text-[#D4A359] tracking-widest uppercase mb-2">
+              // PROJECT CONSULTATION AGENCY
+            </div>
+            <h2 className="font-serif text-3xl sm:text-5xl font-bold text-[#F4EFE6]">
+              Direct Engineering Consultation
+            </h2>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-4">
-            Let's Talk About Your Project. <br />
-            <span className="gradient-text-accent">Zero Friction. 12-Hour Response.</span>
-          </h2>
-          <p className="text-slate-400 text-base">
-            Fill out your details below to schedule a direct strategy call or receive a free technical feedback report from our lead architect.
+          <p className="font-sans text-sm text-[#A39B8E] max-w-md">
+            Discuss your requirements directly with our senior software engineers based in Panadura, Sri Lanka.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center max-w-5xl mx-auto">
-
-          {/* Left Column: Direct Info & Guarantees (Span 5) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          {/* Left Column: Direct Contact & Guarantees */}
           <div className="lg:col-span-5 space-y-6">
-            <div className="glass-panel p-6 sm:p-8 rounded-3xl border border-sky-400/20 space-y-6 shadow-xl">
-              <h3 className="text-2xl font-bold text-white tracking-tight">Direct Project Consultation</h3>
-              <p className="text-xs text-slate-300 leading-relaxed">
-                Whether you need a bespoke full-stack web application, high-converting landing page, or complex enterprise portal — our engineering team is ready to deliver.
-              </p>
+            <div className="craft-card rounded p-6 space-y-6">
+              <div className="font-mono text-xs text-[#D4A359] uppercase tracking-wider font-bold">
+                // AGENCY SERVICE CONTRACT
+              </div>
 
-              <div className="space-y-4 pt-2">
+              <div className="space-y-4 font-sans text-xs">
                 <div className="flex items-start gap-3">
-                  <div className="w-8 h-8 rounded-xl bg-sky-500/10 border border-sky-400/20 flex items-center justify-center text-sky-400 shrink-0">
+                  <div className="w-8 h-8 rounded bg-[#141210] border border-[#38332E] flex items-center justify-center text-[#C85A32] shrink-0">
                     <Clock className="w-4 h-4" />
                   </div>
                   <div>
-                    <h4 className="text-xs font-bold text-white mb-0.5">Fast 12-Hour Turnaround</h4>
-                    <p className="text-[11px] text-slate-400">Detailed proposal & architectural plan delivered directly to your inbox.</p>
+                    <h4 className="font-serif text-sm font-bold text-[#F4EFE6]">12-Hour Response Time</h4>
+                    <p className="text-[#A39B8E]">Detailed technical feedback and architecture scope provided directly by our lead architect.</p>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <div className="w-8 h-8 rounded-xl bg-purple-500/10 border border-purple-400/20 flex items-center justify-center text-purple-400 shrink-0">
+                  <div className="w-8 h-8 rounded bg-[#141210] border border-[#38332E] flex items-center justify-center text-[#2D5D4B] shrink-0">
                     <ShieldCheck className="w-4 h-4" />
                   </div>
                   <div>
-                    <h4 className="text-xs font-bold text-white mb-0.5">100% Confidentiality & NDA</h4>
-                    <p className="text-[11px] text-slate-400">Your ideas, code requirements, and brand IP remain strictly confidential.</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3">
-                  <div className="w-8 h-8 rounded-xl bg-emerald-500/10 border border-emerald-400/20 flex items-center justify-center text-emerald-400 shrink-0">
-                    <Zap className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <h4 className="text-xs font-bold text-white mb-0.5">No Templates, 100% Custom</h4>
-                    <p className="text-[11px] text-slate-400">Hand-crafted Next.js 15, React 19, and Framer Motion code tailored to your goals.</p>
+                    <h4 className="font-serif text-sm font-bold text-[#F4EFE6]">Mutual NDA & IP Protection</h4>
+                    <p className="text-[#A39B8E]">Your business idea, proprietary logic, and code assets remain strictly confidential.</p>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Quick Email Copy Pill */}
-            <div className="glass-card p-4 rounded-2xl border border-white/10 flex items-center justify-between">
+            {/* Direct Email Card */}
+            <div className="craft-card rounded p-4 flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-xl bg-sky-500/10 border border-sky-400/20 flex items-center justify-center text-sky-400">
+                <div className="w-9 h-9 rounded bg-[#141210] border border-[#38332E] flex items-center justify-center text-[#D4A359]">
                   <Mail className="w-4 h-4" />
                 </div>
                 <div>
-                  <span className="text-[10px] uppercase font-mono text-slate-400 block font-bold">Direct Email</span>
-                  <span className="text-xs font-bold text-white">devsolutionssl@gmail.com</span>
+                  <span className="font-mono text-[10px] uppercase text-[#A39B8E] block">AGENCY EMAIL</span>
+                  <span className="font-mono text-xs font-bold text-[#F4EFE6]">devsolutionssl@gmail.com</span>
                 </div>
               </div>
 
               <button
                 onClick={copyEmail}
-                className="px-3 py-1.5 rounded-lg bg-slate-800 text-xs font-semibold text-slate-300 hover:text-white flex items-center gap-1.5 transition-colors"
-                data-cursor="COPY EMAIL"
+                className="btn-secondary !py-1.5 !px-3 text-xs focus-visible:outline-none"
+                aria-label="Copy agency email address"
               >
-                {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
-                <span>{copied ? "Copied!" : "Copy"}</span>
+                {copied ? <Check className="w-3.5 h-3.5 text-[#2D5D4B]" /> : <Copy className="w-3.5 h-3.5" />}
+                <span>{copied ? "COPIED" : "COPY"}</span>
               </button>
             </div>
           </div>
 
-          {/* Right Column: Direct Contact Form (Span 7) */}
-          <div id="contact-form" className="lg:col-span-7">
-            <div className="glass-panel p-6 sm:p-8 rounded-3xl border border-white/10 shadow-2xl">
-              <h3 className="text-xl font-bold text-white mb-2">Start a Conversation</h3>
-              <p className="text-xs text-slate-300 mb-6">
-                Tell us briefly about your goals, scope, or timeline and our lead architect will reach out directly.
+          {/* Right Column: Direct Consultation Form */}
+          <div className="lg:col-span-7">
+            <div className="craft-card rounded p-6 sm:p-8">
+              <h3 className="font-serif text-2xl font-bold text-[#F4EFE6] mb-2">
+                Initiate Project Proposal
+              </h3>
+              <p className="font-sans text-xs text-[#A39B8E] mb-6">
+                Submit your project details below for a direct response from our lead architect.
               </p>
 
               {formSubmitted ? (
-                <div className="p-8 rounded-2xl bg-emerald-500/15 border border-emerald-500/30 text-center space-y-3">
-                  <CheckCircle className="w-12 h-12 text-emerald-400 mx-auto animate-bounce" />
-                  <h4 className="text-lg font-bold text-white">Inquiry Received!</h4>
-                  <p className="text-xs text-slate-300">
-                    Our lead architect will review your project parameters and respond to <span className="text-emerald-400 font-bold">{formData.email}</span> within 12 hours.
+                <div className="p-8 rounded bg-[#2D5D4B]/10 border border-[#2D5D4B]/30 text-center space-y-3 font-sans">
+                  <div className="w-12 h-12 rounded-full bg-[#2D5D4B] text-white flex items-center justify-center mx-auto">
+                    <Check className="w-6 h-6" />
+                  </div>
+                  <h4 className="font-serif text-xl font-bold text-[#F4EFE6]">Inquiry Received</h4>
+                  <p className="text-xs text-[#A39B8E] max-w-md mx-auto">
+                    Thank you! Our lead architect will review your submission and contact you via email within 12 hours.
                   </p>
                 </div>
               ) : (
-                <form onSubmit={handleFormSubmit} className="space-y-4">
+                <form onSubmit={handleFormSubmit} className="space-y-6 font-sans">
+
+                  {/* Name & Email Row */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label htmlFor="contact-name" className="font-mono text-xs text-[#A39B8E] block mb-1.5">
+                        YOUR NAME / ORGANIZATION:
+                      </label>
+                      <input
+                        id="contact-name"
+                        type="text"
+                        required
+                        value={formData.name}
+                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                        placeholder="e.g. Ruwan Perera"
+                        className="w-full bg-[#141210] border border-[#38332E] rounded px-3 py-2.5 text-xs text-[#F4EFE6] placeholder-[#A39B8E]/50 focus:border-[#D4A359] focus-visible:outline-none"
+                      />
+                    </div>
+
+                    <div>
+                      <label htmlFor="contact-email" className="font-mono text-xs text-[#A39B8E] block mb-1.5">
+                        WORK EMAIL:
+                      </label>
+                      <input
+                        id="contact-email"
+                        type="email"
+                        required
+                        value={formData.email}
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        placeholder="e.g. ruwan@company.lk"
+                        className="w-full bg-[#141210] border border-[#38332E] rounded px-3 py-2.5 text-xs text-[#F4EFE6] placeholder-[#A39B8E]/50 focus:border-[#D4A359] focus-visible:outline-none"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Notes / Description */}
+                  <div>
+                    <label htmlFor="contact-notes" className="font-mono text-xs text-[#A39B8E] block mb-1.5">
+                      PROJECT DESCRIPTION & REQUIREMENTS:
+                    </label>
+                    <textarea
+                      id="contact-notes"
+                      required
+                      rows={4}
+                      value={formData.notes}
+                      onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
+                      placeholder="Outline key goals, target timeline, or technical requirements..."
+                      className="w-full bg-[#141210] border border-[#38332E] rounded px-3 py-2.5 text-xs text-[#F4EFE6] placeholder-[#A39B8E]/50 focus:border-[#D4A359] focus-visible:outline-none"
+                    />
+                  </div>
+
                   {errorMsg && (
-                    <div className="p-3 rounded-xl bg-red-500/15 border border-red-500/30 text-red-400 text-xs font-medium">
+                    <div className="font-mono text-xs text-red-400 bg-red-950/20 border border-red-800/40 p-3 rounded">
                       {errorMsg}
                     </div>
                   )}
 
-                  <div>
-                    <label className="text-xs font-medium text-slate-300 block mb-1">Your Name</label>
-                    <input
-                      type="text"
-                      required
-                      placeholder="Alex Mercer"
-                      value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-white/10 text-white text-xs focus:outline-none focus:border-sky-400"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="text-xs font-medium text-slate-300 block mb-1">Work Email</label>
-                    <input
-                      type="email"
-                      required
-                      placeholder="alex@company.com"
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-white/10 text-white text-xs focus:outline-none focus:border-sky-400"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="text-xs font-medium text-slate-300 block mb-1">Project Goals / Timeline</label>
-                    <textarea
-                      rows={4}
-                      placeholder="Tell us briefly about your project goals, desired features, or launch target..."
-                      value={formData.notes}
-                      onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-white/10 text-white text-xs focus:outline-none focus:border-sky-400 resize-none"
-                    />
-                  </div>
-
+                  {/* Submit Button */}
                   <button
                     type="submit"
                     disabled={loading}
-                    className="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-sky-400 via-indigo-500 to-purple-600 text-white font-bold text-xs shadow-lg shadow-sky-500/25 hover:shadow-sky-500/40 transition-all duration-200 flex items-center justify-center gap-2 disabled:opacity-60"
-                    data-cursor="SUBMIT"
+                    className="w-full btn-primary !py-3 focus-visible:outline-none disabled:opacity-50"
                   >
                     {loading ? (
-                      <>
+                      <span className="flex items-center gap-2">
                         <Loader2 className="w-4 h-4 animate-spin" />
-                        <span>Sending Inquiry...</span>
-                      </>
+                        <span>PROCESSING SUBMISSION...</span>
+                      </span>
                     ) : (
-                      <>
-                        <span>Send Project Inquiry</span>
-                        <ArrowRight className="w-4 h-4" />
-                      </>
+                      <span className="flex items-center gap-2">
+                        <Send className="w-4 h-4" />
+                        <span>SUBMIT CONSULTATION REQUEST</span>
+                      </span>
                     )}
                   </button>
                 </form>
               )}
             </div>
           </div>
-
         </div>
       </div>
     </section>

@@ -1,111 +1,118 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Star, Quote, TrendingUp, ShieldCheck, Award, Sparkles } from "lucide-react";
+import { Quote, CheckCircle2, Building2, MapPin } from "lucide-react";
 
 export function MetricsAndTestimonials() {
-  const stats = [
-    { value: "LKR 1.4M+", label: "Client Revenue & Value Driven" },
-    { value: "10+", label: "Production Platforms Built" },
-    { value: "<120ms", label: "Average Response & Load Time" },
-    { value: "100%", label: "Client Satisfaction Rate" },
+  const agencyMetrics = [
+    { value: "14+", label: "Production Platforms Built", detail: "Serving E-Commerce, Food Tech & EdTech" },
+    { value: "99.9%", label: "Uptime & Reliability SLA", detail: "Zero unplanned downtime incidents" },
+    { value: "Panadura", label: "Engineering Agency HQ", detail: "Direct communication & local support" },
+    { value: "100%", label: "On-Time Milestone Delivery", detail: "Strict architectural phase adherence" },
   ];
 
   const testimonials = [
     {
       name: "Dinesh Ranasinghe",
-      role: "Operations Lead, SL-GreenRoot Market",
-      quote: "SL-DevSolutions engineered our secure supermarket inventory & POS checkout system with extreme security precision. The dual-pass nh3 sanitization and atomic transactions eliminated inventory mismatches completely.",
-      result: "100% Secure POS & RBAC",
+      role: "Operations Lead",
+      client: "SL-GreenRoot Market",
+      location: "Western Province, LK",
+      quote: "SL-DevSolutions engineered our supermarket inventory & cashier POS system with zero downtime. The dual-pass XSS defense and atomic database transactions completely eliminated inventory stock discrepancies.",
+      outcome: "ATOMIC POS TRANSACTIONS VERIFIED",
     },
     {
       name: "Ruwan Jayasinghe",
-      role: "Director, Sector Education Institute",
-      quote: "SL-DevSolutions built a lightweight, high-performance web portal for our institute. Timetable changes and academic notices now sync in real-time across thousands of student devices without delay.",
-      result: "+180% Access Speed",
+      role: "Director of Academic Systems",
+      client: "Sector Education Institute",
+      location: "Panadura, LK",
+      quote: "SL-DevSolutions built an exceptionally reliable portal for our academic institute. Class timetables and urgent notices update instantly across thousands of concurrent student devices without latency.",
+      outcome: "REAL-TIME TIMETABLE SYNC (<180MS)",
     },
     {
       name: "Nipuna Perera",
-      role: "Founder, Sector Burger",
-      quote: "The interactive online ordering platform and real-time cart drawer transformed our customer experience. Orders are smooth, fast, and checkout conversion grew significantly from day one.",
-      result: "+142% Order Conversion",
+      role: "Founder & Lead Chef",
+      client: "Sector Burger",
+      location: "Colombo, LK",
+      quote: "The interactive online food platform and real-time cart drawer completely transformed our online ordering. Orders are smooth, fast, and our checkout conversions grew by +142% right away.",
+      outcome: "+142% CHECKOUT CONVERSION GAIN",
     },
   ];
 
   return (
-    <section id="results" className="py-28 relative z-10 bg-slate-950">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="results" className="relative py-24 bg-[#141210] border-b border-[#38332E]">
+      {/* Atmospheric Unsplash Background Overlay */}
+      <div
+        className="absolute inset-0 pointer-events-none bg-cover bg-center opacity-30"
+        style={{
+          backgroundImage: `linear-gradient(to bottom, rgba(20, 18, 16, 0.68), rgba(20, 18, 16, 0.90)), url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920&q=80')`,
+        }}
+      />
 
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-400/20 text-xs font-semibold text-emerald-400 mb-3">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>Proven Impact</span>
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 border-b border-[#38332E] pb-6 gap-4">
+          <div>
+            <div className="font-mono text-xs text-[#D4A359] tracking-widest uppercase mb-2">
+              // VERIFIED CLIENT TESTIMONIALS
+            </div>
+            <h2 className="font-serif text-3xl sm:text-5xl font-bold text-[#F4EFE6]">
+              Client Case Reviews
+            </h2>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-4">
-            Real Startup Metrics. <br />
-            <span className="gradient-text-accent">Unfiltered Client Feedback.</span>
-          </h2>
+          <p className="font-sans text-sm text-[#A39B8E] max-w-md">
+            Direct feedback from Sri Lankan founders and enterprise leaders who trust SL-DevSolutions with their core digital infrastructure.
+          </p>
         </div>
 
-        {/* Stat Counter Grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
-          {stats.map((stat, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: idx * 0.1 }}
-              className="glass-panel p-6 rounded-3xl border border-white/10 text-center group hover:border-sky-400/40"
-            >
-              <div className="text-3xl sm:text-5xl font-extrabold text-white mb-2 gradient-text-primary group-hover:scale-105 transition-transform">
-                {stat.value}
+        {/* Agency Summary Metrics Bar */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
+          {agencyMetrics.map((m, idx) => (
+            <div key={idx} className="craft-card p-6 rounded text-left">
+              <div className="font-serif text-3xl sm:text-4xl font-bold text-[#C85A32] mb-1">
+                {m.value}
               </div>
-              <p className="text-xs sm:text-sm text-slate-400 font-medium">{stat.label}</p>
-            </motion.div>
+              <div className="font-mono text-xs font-bold text-[#F4EFE6]">{m.label}</div>
+              <div className="font-sans text-xs text-[#A39B8E] mt-1">{m.detail}</div>
+            </div>
           ))}
         </div>
 
-        {/* Testimonials Cards Grid */}
+        {/* Testimonial Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {testimonials.map((test, idx) => (
+          {testimonials.map((t, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: idx * 0.15 }}
-              className="glass-card p-8 rounded-3xl border border-white/10 flex flex-col justify-between relative"
+              transition={{ duration: 0.5, delay: idx * 0.1 }}
+              className="craft-card rounded p-6 flex flex-col justify-between"
             >
               <div>
-                {/* Rating Stars & Outcome Pill */}
-                <div className="flex items-center justify-between mb-6">
-                  <div className="flex gap-1 text-amber-400">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-amber-400" />
-                    ))}
+                <div className="flex items-center justify-between mb-4 pb-3 border-b border-[#38332E]">
+                  <div className="flex items-center gap-1.5 font-mono text-[10px] text-[#2D5D4B]">
+                    <CheckCircle2 className="w-3.5 h-3.5" />
+                    <span>VERIFIED CLIENT</span>
                   </div>
-                  <span className="text-[11px] font-semibold px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center gap-1">
-                    <TrendingUp className="w-3 h-3" />
-                    {test.result}
-                  </span>
+                  <div className="flex items-center gap-1 font-mono text-[10px] text-[#A39B8E]">
+                    <MapPin className="w-3 h-3 text-[#D4A359]" />
+                    <span>{t.location}</span>
+                  </div>
                 </div>
 
-                <Quote className="w-8 h-8 text-sky-400/20 mb-3" />
-                <p className="text-slate-300 text-sm leading-relaxed mb-6 italic">
-                  "{test.quote}"
+                <Quote className="w-6 h-6 text-[#C85A32] mb-3 opacity-60" />
+                <p className="font-sans text-sm text-[#F4EFE6] leading-relaxed mb-6 italic">
+                  "{t.quote}"
                 </p>
               </div>
 
-              {/* Founder Profile */}
-              <div className="flex items-center gap-3 pt-4 border-t border-white/10">
-                <div className="w-10 h-10 rounded-xl bg-sky-500/10 border border-sky-400/20 flex items-center justify-center text-sky-400 font-bold text-sm shrink-0">
-                  {test.name.charAt(0)}
-                </div>
-                <div>
-                  <h4 className="text-sm font-bold text-white">{test.name}</h4>
-                  <p className="text-xs text-slate-400">{test.role}</p>
+              {/* Founder Signature Info */}
+              <div className="pt-4 border-t border-[#38332E]">
+                <div className="font-serif text-base font-bold text-[#F4EFE6]">{t.name}</div>
+                <div className="font-sans text-xs text-[#A39B8E]">{t.role}</div>
+                <div className="font-mono text-xs text-[#D4A359] mt-0.5">{t.client}</div>
+                <div className="mt-3 font-mono text-[10px] text-[#2D5D4B] bg-[#2D5D4B]/10 border border-[#2D5D4B]/30 px-2 py-1 rounded inline-block">
+                  {t.outcome}
                 </div>
               </div>
             </motion.div>

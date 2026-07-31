@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Sparkles, Menu, X, ArrowUpRight } from "lucide-react";
+import { Menu, X, ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import LogoImage from "@/assests/SL-DevSolutions Logo.webp";
 
@@ -20,11 +20,11 @@ export function Header() {
   }, []);
 
   const navLinks = [
-    { name: "Live Portfolio", href: "#portfolio" },
-    { name: "Capabilities", href: "#services" },
-    { name: "How We Work", href: "#process" },
-    { name: "Client Results", href: "#results" },
-    { name: "Let's Talk", href: "#contact" },
+    { name: "WORKBENCH", href: "#portfolio" },
+    { name: "CAPABILITIES", href: "#services" },
+    { name: "METHODOLOGY", href: "#process" },
+    { name: "TESTIMONIALS", href: "#results" },
+    { name: "CONTACT US", href: "#contact" },
   ];
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -63,86 +63,75 @@ export function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${scrolled ? "py-3 bg-[rgba(3,7,18,0.75)] backdrop-blur-xl border-b border-white/10 shadow-2xl shadow-cyan-950/20" : "py-6 bg-transparent"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
+          ? "py-3 bg-[#141210]/95 border-b border-[#38332E] shadow-xl"
+          : "py-5 bg-transparent border-b border-[#38332E]/30"
         }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-        {/* Brand Logo */}
+        {/* Agency Brand Header */}
         <a
           href="#"
           onClick={(e) => handleNavClick(e, "#")}
-          className="group flex items-center gap-2.5 text-xl font-extrabold tracking-tight"
-          data-cursor="SL-DEVSOLUTIONS"
+          className="group flex items-center gap-3 focus-visible:outline-none"
+          aria-label="SL-DevSolutions Agency Home"
         >
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-sky-400 via-indigo-500 to-purple-600 p-[1.5px] shadow-lg shadow-sky-500/20 group-hover:shadow-sky-500/40 transition-all duration-300 flex items-center justify-center overflow-hidden">
-            <div className="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center p-1.5">
-              <Image
-                src={LogoImage}
-                alt="SL-DevSolutions Logo"
-                className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300"
-              />
-            </div>
+          <div className="w-9 h-9 rounded bg-[#221F1C] border border-[#38332E] p-1 flex items-center justify-center group-hover:border-[#C85A32] transition-colors">
+            <Image
+              src={LogoImage}
+              alt="SL-DevSolutions Logo"
+              className="w-full h-full object-contain"
+            />
           </div>
           <div className="flex flex-col">
-            <span className="text-white font-bold text-lg leading-tight flex items-center gap-1.5">
-              SL-DevSolutions <span className="w-1.5 h-1.5 rounded-full bg-sky-400 animate-pulse" />
+            <span className="font-serif font-bold text-base tracking-tight text-[#F4EFE6] group-hover:text-[#C85A32] transition-colors">
+              SL-DEVSOLUTIONS
             </span>
-            <span className="text-[10px] tracking-widest uppercase font-semibold text-slate-400 group-hover:text-sky-400 transition-colors">
-              Digital Studio
+            <span className="font-mono text-[10px] tracking-wider text-[#A39B8E]">
+              PANADURA AGENCY // LK
             </span>
           </div>
         </a>
 
-        {/* Live Availability Badge & Desktop Nav */}
-        <div className="hidden lg:flex items-center gap-8">
-          <nav className="flex items-center gap-1 bg-slate-900/60 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/10 shadow-inner">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={(e) => handleNavClick(e, link.href)}
-                className="px-3.5 py-1.5 text-xs font-medium text-slate-300 hover:text-white hover:bg-white/10 rounded-full transition-all duration-200"
-              >
-                {link.name}
-              </a>
-            ))}
-          </nav>
+        {/* Desktop Navigation Links */}
+        <nav className="hidden lg:flex items-center gap-6">
+          {navLinks.map((link) => (
+            <a
+              key={link.name}
+              href={link.href}
+              onClick={(e) => handleNavClick(e, link.href)}
+              className="font-mono text-xs tracking-wider text-[#A39B8E] hover:text-[#D4A359] transition-colors py-1 focus-visible:outline-none"
+            >
+              {link.name}
+            </a>
+          ))}
+        </nav>
 
-          {/* Availability Badge */}
-          <div className="flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/20 px-3 py-1.5 rounded-full">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-            </span>
-            <span className="text-[11px] font-semibold text-emerald-400 tracking-wide">
-              Project Slots Open
-            </span>
+        {/* Availability Marker & CTA */}
+        <div className="hidden sm:flex items-center gap-5">
+          <div className="hidden xl:flex items-center gap-2 px-2.5 py-1 bg-[#221F1C] border border-[#38332E] rounded text-xs font-mono text-[#2D5D4B]">
+            <span className="w-2 h-2 rounded-full bg-[#2D5D4B] animate-pulse" />
+            <span>OPEN FOR NEW PROJECTS</span>
           </div>
-        </div>
 
-        {/* CTA Button */}
-        <div className="hidden sm:flex items-center gap-4">
           <a
-            href="#estimator"
-            onClick={(e) => handleNavClick(e, "#estimator")}
-            className="relative inline-flex items-center justify-center p-0.5 overflow-hidden text-xs font-semibold text-white rounded-full group bg-gradient-to-br from-sky-400 via-indigo-500 to-purple-600 group-hover:from-sky-400 group-hover:to-purple-600 hover:shadow-lg hover:shadow-sky-500/30 transition-all duration-300 active:scale-95"
-            data-cursor="GET STARTED"
+            href="#contact"
+            onClick={(e) => handleNavClick(e, "#contact")}
+            className="btn-primary focus-visible:outline-none"
           >
-            <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-slate-950 rounded-full group-hover:bg-opacity-0 flex items-center gap-2">
-              <Sparkles className="w-3.5 h-3.5 text-sky-400 group-hover:text-white transition-colors" />
-              <span>GET STARTED</span>
-              <ArrowUpRight className="w-3.5 h-3.5 opacity-70 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-            </span>
+            <span>CONTACT US</span>
+            <ArrowUpRight className="w-4 h-4 text-white" />
           </a>
         </div>
 
-        {/* Mobile Hamburger Button */}
+        {/* Mobile Menu Button */}
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="lg:hidden p-2 rounded-xl bg-slate-900 border border-white/10 text-slate-300 hover:text-white"
-          aria-label="Toggle menu"
+          className="lg:hidden p-2 rounded bg-[#221F1C] border border-[#38332E] text-[#F4EFE6] hover:text-[#D4A359] focus-visible:outline-none"
+          aria-label={mobileMenuOpen ? "Close main navigation" : "Open main navigation"}
+          aria-expanded={mobileMenuOpen}
         >
-          {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
         </button>
       </div>
 
@@ -153,22 +142,20 @@ export function Header() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden bg-slate-950/95 backdrop-blur-2xl border-b border-white/10 px-4 pt-4 pb-6 space-y-4 shadow-2xl"
+            className="lg:hidden bg-[#141210] border-b border-[#38332E] px-4 pt-4 pb-6 space-y-4"
           >
-            <div className="flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/20 px-3 py-2 rounded-lg mb-2">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              <span className="text-xs font-semibold text-emerald-400">
-                Project Slots Open
-              </span>
+            <div className="flex items-center gap-2 px-3 py-1.5 bg-[#221F1C] border border-[#38332E] rounded text-xs font-mono text-[#2D5D4B]">
+              <span className="w-2 h-2 rounded-full bg-[#2D5D4B] animate-pulse" />
+              <span>COLOMBO ENGINE ONLINE // OPEN FOR NEW PROJECTS</span>
             </div>
 
-            <nav className="flex flex-col gap-2">
+            <nav className="flex flex-col gap-3">
               {navLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className="px-4 py-2.5 text-sm font-medium text-slate-200 hover:bg-slate-900 hover:text-sky-400 rounded-xl transition-colors"
+                  className="font-mono text-sm tracking-wider text-[#F4EFE6] hover:text-[#D4A359] py-2 border-b border-[#221F1C] focus-visible:outline-none"
                 >
                   {link.name}
                 </a>
@@ -176,12 +163,12 @@ export function Header() {
             </nav>
 
             <a
-              href="#estimator"
-              onClick={(e) => handleNavClick(e, "#estimator")}
-              className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-gradient-to-r from-sky-500 to-indigo-600 text-white text-sm font-semibold shadow-lg shadow-sky-500/25"
+              href="#contact"
+              onClick={(e) => handleNavClick(e, "#contact")}
+              className="w-full btn-primary focus-visible:outline-none"
             >
-              <Sparkles className="w-4 h-4" />
-              <span>Start Project Estimator</span>
+              <span>CONTACT US</span>
+              <ArrowUpRight className="w-4 h-4" />
             </a>
           </motion.div>
         )}

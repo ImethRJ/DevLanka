@@ -10,7 +10,7 @@ import { BrandPopup } from "@/components/ui/BrandPopup";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-slate-950 text-white selection:bg-sky-500 selection:text-white relative overflow-x-hidden">
+    <main className="min-h-screen bg-[#141210] text-[#F4EFE6] selection:bg-[#C85A32] selection:text-white relative overflow-x-hidden">
       <BrandPopup />
       <Header />
       <Hero />

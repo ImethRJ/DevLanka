@@ -1,17 +1,24 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
+import { Fraunces, Manrope, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { SmoothScrollProvider } from "@/components/providers/SmoothScrollProvider";
-import { CustomCursor } from "@/components/ui/CustomCursor";
 
-const jakartaSans = Plus_Jakarta_Sans({
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  variable: "--font-serif",
+  display: "swap",
+});
+
+const manrope = Manrope({
   subsets: ["latin"],
   variable: "--font-sans",
+  display: "swap",
 });
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-mono",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -74,7 +81,7 @@ export const metadata: Metadata = {
     "SL Dev Solutions",
     "SL DevSolutions",
     "Dev Solutions",
-    "SL Dev Solutions Studio",
+    "SL Dev Solutions Agency",
     "Software Developers in Srilanka",
     "Software Developers in Sri Lanka",
     "Software Developers in Panadura",
@@ -106,7 +113,7 @@ export default function RootLayout({
     alternateName: [
       "SL-DevSolutions",
       "SL DevSolutions",
-      "SL Dev Solutions Studio",
+      "SL Dev Solutions Agency",
       "Dev Solutions",
     ],
     url: "https://sl-devsolutions.vercel.app",
@@ -136,16 +143,15 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en" className={`${jakartaSans.variable} ${jetbrainsMono.variable} dark`}>
+    <html lang="en" className={`${fraunces.variable} ${manrope.variable} ${jetbrainsMono.variable} dark scroll-smooth`}>
       <head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="font-sans bg-slate-950 text-slate-100 antialiased min-h-screen">
+      <body className="font-sans bg-[#141210] text-[#F4EFE6] antialiased min-h-screen selection:bg-[#C85A32] selection:text-white">
         <SmoothScrollProvider>
-          <CustomCursor />
           {children}
         </SmoothScrollProvider>
       </body>

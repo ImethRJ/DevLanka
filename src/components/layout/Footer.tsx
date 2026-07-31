@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Heart, ArrowUp, Globe, Share2, MessageSquare, Terminal } from "lucide-react";
+import { ArrowUp, Compass, Mail } from "lucide-react";
 import Image from "next/image";
 import LogoImage from "@/assests/SL-DevSolutions Logo.webp";
 
@@ -17,6 +17,7 @@ export function Footer() {
           minute: "2-digit",
           second: "2-digit",
           hour12: true,
+          timeZone: "Asia/Colombo",
         })
       );
     };
@@ -30,91 +31,79 @@ export function Footer() {
   };
 
   return (
-    <footer className="bg-slate-950 text-slate-400 text-xs border-t border-white/10 pt-16 pb-12 relative z-10">
+    <footer className="bg-[#141210] text-[#A39B8E] text-xs border-t border-[#38332E] pt-16 pb-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 pb-12 border-b border-white/10">
-          
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 pb-12 border-b border-[#38332E]">
           {/* Brand Col */}
           <div className="md:col-span-5 space-y-4">
-            <a href="#" className="flex items-center gap-2.5 text-xl font-extrabold text-white">
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-sky-400 to-indigo-600 p-[1px] shadow-lg shadow-sky-500/20 flex items-center justify-center overflow-hidden">
-                <div className="w-full h-full bg-slate-950 rounded-[11px] flex items-center justify-center p-1.5">
-                  <Image
-                    src={LogoImage}
-                    alt="SL-DevSolutions Logo"
-                    className="w-full h-full object-contain"
-                  />
-                </div>
+            <a href="#" className="flex items-center gap-3 text-lg font-serif font-bold text-[#F4EFE6] focus-visible:outline-none">
+              <div className="w-8 h-8 rounded bg-[#221F1C] border border-[#38332E] p-1 flex items-center justify-center">
+                <Image
+                  src={LogoImage}
+                  alt="SL-DevSolutions Logo"
+                  className="w-full h-full object-contain"
+                />
               </div>
-              <span className="tracking-tight">SL-DevSolutions</span>
+              <span>SL-DEVSOLUTIONS AGENCY</span>
             </a>
-            <p className="text-slate-400 leading-relaxed max-w-sm">
-              Full-Stack Web Engineering & UI/UX Architecture Studio. Crafting ultra-fluid, high-converting digital products for ambitious global brands.
+            <p className="font-sans text-xs leading-relaxed max-w-sm text-[#A39B8E]">
+              Panadura-based web engineering & software architecture agency. Specialized in bespoke web applications, high-throughput e-commerce engines, and custom enterprise tools.
             </p>
 
-            {/* Live Clock & Location */}
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-900 border border-white/10 font-mono text-[11px] text-slate-300">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              <span>Colombo, LK</span>
-              <span className="text-slate-500">|</span>
-              <span className="text-sky-400 font-bold">{time || "12:00:00 PM"}</span>
+            {/* Live Colombo Time Clock */}
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded bg-[#221F1C] border border-[#38332E] font-mono text-[11px] text-[#F4EFE6]">
+              <span className="w-2 h-2 rounded-full bg-[#2D5D4B] animate-pulse" />
+              <span>COLOMBO (LK)</span>
+              <span className="text-[#38332E]">|</span>
+              <span className="text-[#D4A359] font-bold">{time || "12:00:00 PM"}</span>
             </div>
           </div>
 
           {/* Nav Links */}
-          <div className="md:col-span-3 space-y-3">
-            <h4 className="text-white font-bold text-xs uppercase tracking-wider font-mono">Navigation</h4>
-            <ul className="space-y-2">
-              <li><a href="#portfolio" className="hover:text-sky-400 transition-colors">Live Portfolio</a></li>
-              <li><a href="#services" className="hover:text-sky-400 transition-colors">Services Bento</a></li>
-              <li><a href="#process" className="hover:text-sky-400 transition-colors">How We Work</a></li>
-              <li><a href="#results" className="hover:text-sky-400 transition-colors">Client Testimonials</a></li>
-              <li><a href="#contact" className="hover:text-sky-400 transition-colors">Let's Talk Projects</a></li>
+          <div className="md:col-span-3 space-y-3 font-mono">
+            <h4 className="text-[#F4EFE6] font-bold text-xs uppercase tracking-wider">INDEX</h4>
+            <ul className="space-y-2 text-xs">
+              <li><a href="#portfolio" className="hover:text-[#D4A359] transition-colors focus-visible:outline-none">Workbench</a></li>
+              <li><a href="#services" className="hover:text-[#D4A359] transition-colors focus-visible:outline-none">Capabilities</a></li>
+              <li><a href="#process" className="hover:text-[#D4A359] transition-colors focus-visible:outline-none">Methodology</a></li>
+              <li><a href="#results" className="hover:text-[#D4A359] transition-colors focus-visible:outline-none">Testimonials</a></li>
+              <li><a href="#contact" className="hover:text-[#D4A359] transition-colors focus-visible:outline-none">Contact Us</a></li>
             </ul>
           </div>
 
-          {/* Social Links & Back to Top */}
-          <div className="md:col-span-4 space-y-4 flex flex-col justify-between">
+          {/* Contact & Back to Top */}
+          <div className="md:col-span-4 space-y-4 flex flex-col justify-between font-mono">
             <div>
-              <h4 className="text-white font-bold text-xs uppercase tracking-wider font-mono mb-3">Connect With Us</h4>
-              <div className="flex items-center gap-3">
-                <a href="https://github.com" target="_blank" rel="noreferrer" className="p-2.5 rounded-xl bg-slate-900 border border-white/10 hover:text-sky-400 hover:border-sky-400/40 transition-all flex items-center gap-1.5">
-                  <Terminal className="w-4 h-4" />
-                  <span className="text-[10px] font-bold">GitHub</span>
-                </a>
-                <a href="https://twitter.com" target="_blank" rel="noreferrer" className="p-2.5 rounded-xl bg-slate-900 border border-white/10 hover:text-sky-400 hover:border-sky-400/40 transition-all flex items-center gap-1.5">
-                  <Share2 className="w-4 h-4" />
-                  <span className="text-[10px] font-bold">Twitter/X</span>
-                </a>
-                <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="p-2.5 rounded-xl bg-slate-900 border border-white/10 hover:text-sky-400 hover:border-sky-400/40 transition-all flex items-center gap-1.5">
-                  <Globe className="w-4 h-4" />
-                  <span className="text-[10px] font-bold">LinkedIn</span>
-                </a>
+              <h4 className="text-[#F4EFE6] font-bold text-xs uppercase tracking-wider mb-3">AGENCY LOCATION</h4>
+              <div className="flex items-center gap-2 text-xs text-[#A39B8E] mb-2">
+                <Compass className="w-4 h-4 text-[#C85A32]" />
+                <span>Panadura, Western Province, Sri Lanka</span>
+              </div>
+              <div className="flex items-center gap-2 text-xs text-[#A39B8E]">
+                <Mail className="w-4 h-4 text-[#D4A359]" />
+                <span>devsolutionssl@gmail.com</span>
               </div>
             </div>
 
             <button
               onClick={scrollToTop}
-              className="self-start inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-900 border border-white/10 text-slate-300 hover:text-white hover:border-sky-400/40 transition-all font-semibold"
+              className="btn-secondary !py-2 !px-4 self-start focus-visible:outline-none"
             >
-              <span>Back to Top</span>
+              <span>BACK TO TOP</span>
               <ArrowUp className="w-3.5 h-3.5" />
             </button>
           </div>
-
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-slate-500">
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-[11px] text-[#A39B8E]">
           <div>
-            &copy; {new Date().getFullYear()} SL-DevSolutions Digital Studio. All rights reserved.
+            &copy; {new Date().getFullYear()} SL-DEVSOLUTIONS AGENCY. ALL RIGHTS RESERVED.
           </div>
-          <div className="flex items-center gap-1">
-            Designed & Engineered with <Heart className="w-3 h-3 text-red-500 fill-red-500 mx-0.5" /> by SL-DevSolutions Architect Team
+          <div>
+            PANADURA // LAT: 6.7132° N, LON: 79.9026° E
           </div>
         </div>
-
       </div>
     </footer>
   );
